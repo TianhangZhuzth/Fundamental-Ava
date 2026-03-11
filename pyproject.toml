@@ -4,3 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ava"
+version = "0.4.0"
+description = "Many-agent simulation framework for digital intelligence development"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
