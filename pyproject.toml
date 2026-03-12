@@ -9,3 +9,7 @@ description = "Many-agent simulation framework for digital intelligence developm
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Apache-2.0" }
+authors = [{ name = "Fundamental Research Labs" }]
+keywords = [
+    "multi-agent-systems",
+    "agentic-reasoning",
