@@ -13,3 +13,8 @@ behavior in populations of cognitive agents.**
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-261230)](https://github.com/astral-sh/ruff)
 
 <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/6a4314953f719d29690f224f_fundamental.png" alt="Fundamental Research Labs" width="64" height="64" style="border-radius:50%" />
+
+Built on research from [Fundamental Research Labs](https://fundamentalresearchlabs.com/) · [@Fundamental](https://x.com/Fundamental)
+
+</div>
+
