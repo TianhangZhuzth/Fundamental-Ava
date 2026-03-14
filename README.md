@@ -18,3 +18,9 @@ Built on research from [Fundamental Research Labs](https://fundamentalresearchla
 
 </div>
 
+---
+
+## What this is
+
+`Ava` runs large populations of autonomous agents — each with its
+own memory, belief system, and social model — inside a shared environment
