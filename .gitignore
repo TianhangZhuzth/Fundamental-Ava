@@ -28,3 +28,7 @@ env/
 venv/
 ENV/
 
+# Testing
+.tox/
+.coverage
+.coverage.*
