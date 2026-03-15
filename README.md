@@ -24,3 +24,8 @@ Built on research from [Fundamental Research Labs](https://fundamentalresearchla
 
 `Ava` runs large populations of autonomous agents — each with its
 own memory, belief system, and social model — inside a shared environment
+and asks a simple question: **what happens at the population level that
+nobody programmed in directly?**
+
+Individual agents are deliberately simple: a perceive-deliberate-act loop,
+a tiered memory store, and a goal-weighted decision procedure. None of
