@@ -29,3 +29,7 @@ nobody programmed in directly?**
 
 Individual agents are deliberately simple: a perceive-deliberate-act loop,
 a tiered memory store, and a goal-weighted decision procedure. None of
+them are told to specialize into roles, form alliances, write laws, or
+develop shared norms. Those are civilization-level properties this
+framework is built to detect and measure as they emerge from thousands of
+local interactions — the same phenomenon documented in Stanford's
