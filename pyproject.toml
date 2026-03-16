@@ -29,3 +29,7 @@ classifiers = [
 
 dependencies = [
     "pydantic>=2.7",
+    "numpy>=1.26",
+    "networkx>=3.3",
+    "anyio>=4.4",
+    "httpx>=0.27",
