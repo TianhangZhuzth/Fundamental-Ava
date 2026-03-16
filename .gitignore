@@ -41,3 +41,9 @@ coverage.xml
 
 # Jupyter
 .ipynb_checkpoints
+
+# Distribution
+*.manifest
+*.spec
+
+# Logs
