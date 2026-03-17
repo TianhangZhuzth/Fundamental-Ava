@@ -33,3 +33,12 @@ dependencies = [
     "networkx>=3.3",
     "anyio>=4.4",
     "httpx>=0.27",
+    "tenacity>=8.3",
+    "structlog>=24.1",
+    "tiktoken>=0.7",
+    "scipy>=1.13",
+    "uvloop>=0.19; platform_system != 'Windows'",
+]
+
+[project.optional-dependencies]
+dev = [
