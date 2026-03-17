@@ -47,3 +47,8 @@ coverage.xml
 *.spec
 
 # Logs
+*.log
+logs/
+traces/
+
+# OS
