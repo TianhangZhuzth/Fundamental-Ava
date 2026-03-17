@@ -38,3 +38,11 @@ into thousand-agent societies.
 
 ```python
 import asyncio
+
+from ava import Civilization, SimulationConfig
+from ava.agents.base import Action, AgentCore
+
+
+class Settler(AgentCore):
+    async def deliberate(self, percepts, world_state):
+        return Action(kind="forage", payload={"energy_cost": 1.0})
