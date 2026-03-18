@@ -46,3 +46,10 @@ from ava.agents.base import Action, AgentCore
 class Settler(AgentCore):
     async def deliberate(self, percepts, world_state):
         return Action(kind="forage", payload={"energy_cost": 1.0})
+
+
+async def main() -> None:
+    civ = Civilization(SimulationConfig(max_ticks=200))
+    for i in range(500):
+        civ.add_agent(Settler(name=f"settler-{i}", bus=civ.bus))
+
