@@ -60,3 +60,12 @@ traces/
 ehthumbs.db
 Thumbs.db
 
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project
+.secrets
+*.pkl
