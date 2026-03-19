@@ -48,3 +48,10 @@ dev = [
     "ruff>=0.5",
     "mypy>=1.10",
     "hypothesis>=6.103",
+]
+viz = ["matplotlib>=3.9", "plotly>=5.22", "pyvis>=0.3"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ava"]
+
+[tool.ruff]
