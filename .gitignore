@@ -69,3 +69,7 @@ Thumbs.db
 # Project
 .secrets
 *.pkl
+*.db
+checkpoints/
+runs/
+artifacts/
