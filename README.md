@@ -53,3 +53,9 @@ async def main() -> None:
     for i in range(500):
         civ.add_agent(Settler(name=f"settler-{i}", bus=civ.bus))
 
+    reports = await civ.run()
+    print(f"ran {len(reports)} ticks, final population {reports[-1].population}")
+
+
+asyncio.run(main())
+```
