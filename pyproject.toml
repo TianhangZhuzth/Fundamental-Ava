@@ -55,3 +55,9 @@ viz = ["matplotlib>=3.9", "plotly>=5.22", "pyvis>=0.3"]
 packages = ["src/ava"]
 
 [tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC", "SIM", "RUF"]
+
