@@ -59,3 +59,12 @@ async def main() -> None:
 
 asyncio.run(main())
 ```
+
+## Interface preview
+
+A reference dashboard for inspecting a running civilization in real time —
+shown here with **Ava**, one of the cognitive agents, surfaced alongside
+her current state, memory, and relationships:
+
+<div align="center">
+<img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/6a43169ce388becc2732c739_fundamental%20(1).png" alt="Agent inspector UI showing agent Ava" width="100%" />
