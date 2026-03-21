@@ -68,3 +68,7 @@ her current state, memory, and relationships:
 
 <div align="center">
 <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/6a43169ce388becc2732c739_fundamental%20(1).png" alt="Agent inspector UI showing agent Ava" width="100%" />
+</div>
+
+The simulation engine itself is headless; this view is built on top of
+`SimulationTracer` and `Civilization.population_snapshot()` to render live
