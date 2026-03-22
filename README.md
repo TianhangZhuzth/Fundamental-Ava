@@ -81,3 +81,9 @@ scheduler, memory system, or message bus wasn't designed for scale.
 `Ava` makes three architectural bets up front:
 
 1. **Concurrency is structural, not bolted on.** Every tick runs through
+   `asyncio.TaskGroup` with a bounded `asyncio.Semaphore`, so a population
+   of agents steps in parallel without one slow agent blocking the tick,
+   and one agent's unhandled exception can't silently corrupt the rest of
+   the run.
+2. **Memory is tiered, not a flat log.** Episodic, semantic, and
+   procedural memory are separate stores with different retrieval and
