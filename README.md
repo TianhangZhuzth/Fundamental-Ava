@@ -72,3 +72,12 @@ her current state, memory, and relationships:
 
 The simulation engine itself is headless; this view is built on top of
 `SimulationTracer` and `Civilization.population_snapshot()` to render live
+agent state without coupling the core library to any particular frontend.
+
+## Why it's built this way
+
+Most multi-agent demos top out at a handful of agents because the
+scheduler, memory system, or message bus wasn't designed for scale.
+`Ava` makes three architectural bets up front:
+
+1. **Concurrency is structural, not bolted on.** Every tick runs through
