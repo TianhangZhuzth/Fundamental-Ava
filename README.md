@@ -87,3 +87,10 @@ scheduler, memory system, or message bus wasn't designed for scale.
    the run.
 2. **Memory is tiered, not a flat log.** Episodic, semantic, and
    procedural memory are separate stores with different retrieval and
+   decay semantics — recent events fade, important events persist,
+   reusable skills get reinforced independently of any single episode.
+3. **Emergence is measured statistically, not eyeballed.** The analysis
+   layer runs change-point detection (Mann-Whitney U over a rolling
+   window) against population metrics like specialization and wealth
+   distribution, so a claim like "agents formed distinct roles" is backed
+   by a p-value, not a hunch.
