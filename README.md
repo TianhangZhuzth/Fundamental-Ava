@@ -94,3 +94,9 @@ scheduler, memory system, or message bus wasn't designed for scale.
    window) against population metrics like specialization and wealth
    distribution, so a claim like "agents formed distinct roles" is backed
    by a p-value, not a hunch.
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                          Civilization                             │
