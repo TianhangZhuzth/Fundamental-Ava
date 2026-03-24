@@ -100,3 +100,10 @@ scheduler, memory system, or message bus wasn't designed for scale.
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                          Civilization                             │
+│  ┌───────────┐   ┌───────────────┐   ┌─────────────────────┐    │
+│  │  Culture  │   │  Governance   │   │  EmergenceDetector   │    │
+│  │ (norms)   │   │ (laws/votes)  │   │  (analysis layer)    │    │
+│  └─────┬─────┘   └───────┬───────┘   └──────────┬───────────┘    │
+│        └─────────────────┼──────────────────────┘                │
+│                  ┌────────┴─────────┐                             │
+│                  │  ExecutionEngine │  TaskGroup + Semaphore       │
