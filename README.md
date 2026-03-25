@@ -130,3 +130,10 @@ scheduler, memory system, or message bus wasn't designed for scale.
 | Social | `ava.agents.social` | Relationship tracking, depth-1 theory of mind |
 | Communication | `ava.communication` | Async pub/sub bus, BFT-style consensus |
 | Civilization | `ava.civilization` | Tick orchestration, culture, governance |
+| Execution | `ava.execution` | Bounded-concurrency scheduler, tracing |
+| Analysis | `ava.analysis` | Change-point detection over population metrics |
+
+## Memory architecture
+
+Each agent's `MemoryStore` separates *what happened* from *what it means*:
+
