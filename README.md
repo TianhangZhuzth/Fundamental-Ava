@@ -122,3 +122,11 @@ scheduler, memory system, or message bus wasn't designed for scale.
 └─────────────────────────────────────────────────────────────────┘
 ```
 
+| Layer | Module | Responsibility |
+|---|---|---|
+| Agent | `ava.agents.base` | Perceive → deliberate → act lifecycle, state machine |
+| Memory | `ava.agents.memory` | Episodic stream, semantic facts, procedural skills |
+| Cognition | `ava.agents.cognitive` | Belief system, goal-weighted action selection |
+| Social | `ava.agents.social` | Relationship tracking, depth-1 theory of mind |
+| Communication | `ava.communication` | Async pub/sub bus, BFT-style consensus |
+| Civilization | `ava.civilization` | Tick orchestration, culture, governance |
