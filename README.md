@@ -137,3 +137,11 @@ scheduler, memory system, or message bus wasn't designed for scale.
 
 Each agent's `MemoryStore` separates *what happened* from *what it means*:
 
+```python
+from ava.agents.memory import MemoryStore
+
+memory = MemoryStore(owner_id="settler-12")
+
+memory.episodic.record(
+    event_type="alliance",
+    content={"alliance": True, "actor": "settler-12", "target": "settler-47"},
