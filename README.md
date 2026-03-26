@@ -145,3 +145,8 @@ memory = MemoryStore(owner_id="settler-12")
 memory.episodic.record(
     event_type="alliance",
     content={"alliance": True, "actor": "settler-12", "target": "settler-47"},
+    tick=88,
+)
+
+# Reflection distills high-importance episodes into durable semantic facts,
+# the way a generative agent periodically summarizes its memory stream.
