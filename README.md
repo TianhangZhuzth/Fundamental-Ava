@@ -150,3 +150,7 @@ memory.episodic.record(
 
 # Reflection distills high-importance episodes into durable semantic facts,
 # the way a generative agent periodically summarizes its memory stream.
+facts = memory.reflect(now_tick=89)
+
+# Retrieval blends recency, importance, and embedding relevance.
+recent = memory.episodic.retrieve(query_embedding=None, now_tick=89, top_k=10)
