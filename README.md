@@ -159,3 +159,7 @@ recent = memory.episodic.retrieve(query_embedding=None, now_tick=89, top_k=10)
 Procedural memory reinforces successful action sequences independently,
 so an agent that keeps succeeding at foraging in forest biomes converges
 on that skill without anyone hand-tuning a policy:
+
+```python
+from ava.agents.memory import ProceduralMemory, Skill
+
