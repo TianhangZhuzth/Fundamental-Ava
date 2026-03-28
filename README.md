@@ -163,3 +163,10 @@ on that skill without anyone hand-tuning a policy:
 ```python
 from ava.agents.memory import ProceduralMemory, Skill
 
+procedural = ProceduralMemory(learning_rate=0.2)
+procedural.learn(Skill(name="forage", trigger_conditions={"biome": "forest"}, action_sequence=[]))
+procedural.reinforce("forage", success=True)
+```
+
+## Governance and consensus
+
