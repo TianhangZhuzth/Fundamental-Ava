@@ -170,3 +170,9 @@ procedural.reinforce("forage", success=True)
 
 ## Governance and consensus
 
+Laws are not declared — they are proposed, voted on, and ratified by
+agents through the same `GovernanceSystem` substrate, with quorum and
+majority thresholds that scale with population size:
+
+```python
+from ava.civilization.governance import GovernanceSystem
