@@ -176,3 +176,10 @@ majority thresholds that scale with population size:
 
 ```python
 from ava.civilization.governance import GovernanceSystem
+
+gov = GovernanceSystem(ratification_margin=0.5, min_quorum=3)
+proposal = gov.propose(text="share water equally", proposer_id="settler-3", tick=120)
+
+for voter in ("settler-3", "settler-7", "settler-19"):
+    gov.cast_vote(proposal.id, voter, support=True)
+
