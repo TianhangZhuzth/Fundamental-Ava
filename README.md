@@ -189,3 +189,8 @@ ratified = gov.evaluate_proposals(tick=121)  # -> 1
 For decisions that must tolerate adversarial or faulty agents, the
 communication layer implements a three-phase PBFT-style protocol
 (`PROPOSE → PREPARE → COMMIT`) that commits once `2f + 1` of `n = 3f + 1`
+participants agree:
+
+```python
+from ava.communication.consensus import RaftLikeConsensus, Proposal, Phase
+
