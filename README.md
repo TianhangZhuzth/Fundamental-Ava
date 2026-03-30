@@ -194,3 +194,11 @@ participants agree:
 ```python
 from ava.communication.consensus import RaftLikeConsensus, Proposal, Phase
 
+consensus = RaftLikeConsensus(participant_ids=["a", "b", "c", "d"])
+
+async def collect_votes(proposal: Proposal, phase: Phase) -> set[str]:
+    return {"a", "b", "c"}  # quorum reached out of 4 participants, f=1
+
+result = await consensus.propose(
+    Proposal(id="p-1", proposer_id="a", payload={"rule": "rotate_leadership"}),
+    vote_collector=collect_votes,
