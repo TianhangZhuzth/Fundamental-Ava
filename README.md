@@ -183,3 +183,9 @@ proposal = gov.propose(text="share water equally", proposer_id="settler-3", tick
 for voter in ("settler-3", "settler-7", "settler-19"):
     gov.cast_vote(proposal.id, voter, support=True)
 
+ratified = gov.evaluate_proposals(tick=121)  # -> 1
+```
+
+For decisions that must tolerate adversarial or faulty agents, the
+communication layer implements a three-phase PBFT-style protocol
+(`PROPOSE → PREPARE → COMMIT`) that commits once `2f + 1` of `n = 3f + 1`
