@@ -202,3 +202,8 @@ async def collect_votes(proposal: Proposal, phase: Phase) -> set[str]:
 result = await consensus.propose(
     Proposal(id="p-1", proposer_id="a", payload={"rule": "rotate_leadership"}),
     vote_collector=collect_votes,
+)
+```
+
+## Detecting emergence
+
