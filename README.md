@@ -224,3 +224,11 @@ for tick, action_counts_by_agent in simulation_log:
 ```
 
 See [`experiments/role_emergence_experiment.py`](experiments/role_emergence_experiment.py)
+for a full runnable example where sixty agents, given nothing but a
+reinforcement rule over three possible actions, sort themselves into
+distinct roles under measurable statistical significance.
+
+## Performance
+
+Concurrency is bounded, not unlimited — `ExecutionEngine` caps in-flight
+agents with a semaphore so a tick over a large population degrades
