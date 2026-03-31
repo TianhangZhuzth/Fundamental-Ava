@@ -207,3 +207,11 @@ result = await consensus.propose(
 
 ## Detecting emergence
 
+The analysis layer turns "it looks like agents specialized" into a
+statistically grounded claim:
+
+```python
+from ava.analysis.emergence import EmergenceDetector, specialization_index
+
+detector = EmergenceDetector(window=30, significance=0.05)
+
