@@ -215,3 +215,12 @@ from ava.analysis.emergence import EmergenceDetector, specialization_index
 
 detector = EmergenceDetector(window=30, significance=0.05)
 
+for tick, action_counts_by_agent in simulation_log:
+    index = specialization_index(action_counts_by_agent)
+    event = detector.observe_metric("role_specialization", tick=tick, value=index)
+    if event is not None:
+        print(event.description)
+        # "role_specialization shifted from 0.140 to 0.710 (p=0.0021)"
+```
+
+See [`experiments/role_emergence_experiment.py`](experiments/role_emergence_experiment.py)
