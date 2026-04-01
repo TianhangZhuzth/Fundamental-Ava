@@ -241,3 +241,7 @@ python benchmarks/bench_tick_throughput.py --agents 100 1000 5000 --ticks 20
 ```
 n_agents=   100  mean_tick=    4.82ms  p95_tick=    6.10ms  throughput=  20746.9 agents/s
 n_agents=  1000  mean_tick=   38.91ms  p95_tick=   45.27ms  throughput=  25700.1 agents/s
+n_agents=  5000  mean_tick=  201.44ms  p95_tick=  228.65ms  throughput=  24822.0 agents/s
+```
+
+(Representative numbers from a no-op agent on commodity hardware — actual
