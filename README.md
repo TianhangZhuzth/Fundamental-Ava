@@ -254,3 +254,11 @@ whether it calls out to an LLM backend.)
 git clone https://github.com/TianhangZhuzth/Fundamental-Ava.git
 cd Fundamental-Ava
 pip install -e ".[dev]"
+```
+
+Requires Python 3.11+ (the execution engine uses `asyncio.TaskGroup`,
+added in 3.11).
+
+## Running the test suite
+
+```bash
