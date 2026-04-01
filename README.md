@@ -245,3 +245,12 @@ n_agents=  5000  mean_tick=  201.44ms  p95_tick=  228.65ms  throughput=  24822.0
 ```
 
 (Representative numbers from a no-op agent on commodity hardware — actual
+throughput depends heavily on what `deliberate()` does per agent, e.g.
+whether it calls out to an LLM backend.)
+
+## Installation
+
+```bash
+git clone https://github.com/TianhangZhuzth/Fundamental-Ava.git
+cd Fundamental-Ava
+pip install -e ".[dev]"
