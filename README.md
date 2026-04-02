@@ -262,3 +262,8 @@ added in 3.11).
 ## Running the test suite
 
 ```bash
+pytest --cov=ava --cov-report=term-missing
+ruff check src tests benchmarks experiments
+mypy src/ava
+```
+
