@@ -280,3 +280,7 @@ src/ava/
 └── utils/                 # Small shared helpers
 
 tests/          # pytest suite, one file per module
+benchmarks/   # throughput and latency benchmarks
+experiments/    # runnable research scripts (e.g. role emergence)
+```
+
