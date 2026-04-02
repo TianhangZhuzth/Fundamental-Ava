@@ -273,3 +273,10 @@ mypy src/ava
 src/ava/
 ├── agents/          # AgentCore lifecycle, memory, cognition, social modeling
 ├── communication/    # MessageBus, BFT-style consensus
+├── civilization/     # Simulation engine, culture, governance
+├── execution/         # Concurrent scheduler, tracer
+├── models/             # LLM backend abstraction (mock, rate-limited, caching)
+├── analysis/            # Emergence detection over population metrics
+└── utils/                 # Small shared helpers
+
+tests/          # pytest suite, one file per module
