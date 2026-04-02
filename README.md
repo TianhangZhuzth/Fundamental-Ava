@@ -267,3 +267,9 @@ ruff check src tests benchmarks experiments
 mypy src/ava
 ```
 
+## Project layout
+
+```
+src/ava/
+├── agents/          # AgentCore lifecycle, memory, cognition, social modeling
+├── communication/    # MessageBus, BFT-style consensus
