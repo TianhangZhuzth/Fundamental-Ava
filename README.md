@@ -289,3 +289,7 @@ experiments/    # runnable research scripts (e.g. role emergence)
 This is research infrastructure under active development. APIs in
 `ava.agents` and `ava.civilization` are reasonably
 stable; `ava.analysis` is evolving as we add more emergence
+detectors beyond specialization and stratification.
+
+## License
+
