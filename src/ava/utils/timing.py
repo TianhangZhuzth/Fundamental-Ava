@@ -16,3 +16,9 @@ class Timer:
         return self
 
     def __exit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc: BaseException | None,
+        tb: TracebackType | None,
+    ) -> None:
+        self.elapsed_seconds = time.perf_counter() - self._start
