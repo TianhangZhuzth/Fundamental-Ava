@@ -3,3 +3,7 @@
 from __future__ import annotations
 
 import time
+from types import TracebackType
+
+
+class Timer:
