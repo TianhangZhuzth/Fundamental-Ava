@@ -7,3 +7,7 @@ cognitive strategies (reactive, planning, social) without touching the
 lifecycle machinery.
 """
 
+from __future__ import annotations
+
+import enum
+import time
