@@ -7,3 +7,7 @@ __all__ = [
     "AgentCore",
     "AgentState",
     "BeliefSystem",
+    "CognitiveArchitecture",
+    "EpisodicMemory",
+    "MemoryStore",
+    "ProceduralMemory",
