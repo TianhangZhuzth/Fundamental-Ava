@@ -15,3 +15,11 @@ async def test_agent_starts_idle(echo_agent: EchoAgent) -> None:
 async def test_step_returns_to_idle(echo_agent: EchoAgent) -> None:
     action = await echo_agent.step(world_state={})
     assert action is not None
+    assert action.kind == "noop"
+    assert echo_agent.state == AgentState.IDLE
+    assert echo_agent.tick == 1
+
+
+@pytest.mark.asyncio
+async def test_energy_depletes_and_blocks(echo_agent: EchoAgent) -> None:
+    echo_agent.energy = 1.0
