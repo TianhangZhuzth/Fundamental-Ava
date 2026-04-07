@@ -11,3 +11,10 @@ class EchoAgent(AgentCore):
     no-op action so lifecycle and scheduling logic can be exercised
     without depending on any particular cognitive strategy."""
 
+    async def deliberate(
+        self, percepts: list[Percept], world_state: dict
+    ) -> Action | None:
+        return Action(kind="noop", payload={"energy_cost": 1.0})
+
+
+@pytest.fixture
