@@ -23,3 +23,8 @@ async def test_step_returns_to_idle(echo_agent: EchoAgent) -> None:
 @pytest.mark.asyncio
 async def test_energy_depletes_and_blocks(echo_agent: EchoAgent) -> None:
     echo_agent.energy = 1.0
+    await echo_agent.step(world_state={})
+    assert echo_agent.energy == 0.0
+    assert echo_agent.state == AgentState.BLOCKED
+
+
