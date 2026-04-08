@@ -11,3 +11,7 @@ __all__ = [
     "EpisodicMemory",
     "MemoryStore",
     "ProceduralMemory",
+    "SemanticMemory",
+    "SocialModel",
+    "TheoryOfMind",
+]
