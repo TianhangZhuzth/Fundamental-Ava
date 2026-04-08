@@ -18,3 +18,10 @@ class EchoAgent(AgentCore):
 
 
 @pytest.fixture
+def bus() -> MessageBus:
+    return MessageBus()
+
+
+@pytest.fixture
+def echo_agent(bus: MessageBus) -> EchoAgent:
+    return EchoAgent(name="echo", bus=bus)
