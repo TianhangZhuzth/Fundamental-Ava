@@ -22,3 +22,12 @@ import structlog
 from ava.agents.memory import MemoryStore
 from ava.communication.protocol import Message, MessageBus
 
+log = structlog.get_logger(__name__)
+
+
+class AgentState(enum.Enum):
+    """Lifecycle states for an agent within a simulation tick."""
+
+    IDLE = "idle"
+    PERCEIVING = "perceiving"
+    DELIBERATING = "deliberating"
