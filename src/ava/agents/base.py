@@ -31,3 +31,7 @@ class AgentState(enum.Enum):
     IDLE = "idle"
     PERCEIVING = "perceiving"
     DELIBERATING = "deliberating"
+    ACTING = "acting"
+    BLOCKED = "blocked"
+    TERMINATED = "terminated"
+
