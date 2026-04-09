@@ -35,3 +35,12 @@ class AgentState(enum.Enum):
     BLOCKED = "blocked"
     TERMINATED = "terminated"
 
+
+class InvalidTransition(RuntimeError):
+    """Raised when an agent attempts an illegal state transition."""
+
+
+_TRANSITIONS: dict[AgentState, frozenset[AgentState]] = {
+    AgentState.IDLE: frozenset({AgentState.PERCEIVING, AgentState.TERMINATED}),
+    AgentState.PERCEIVING: frozenset({AgentState.DELIBERATING, AgentState.BLOCKED}),
+    AgentState.DELIBERATING: frozenset({AgentState.ACTING, AgentState.BLOCKED}),
