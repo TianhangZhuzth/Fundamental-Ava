@@ -34,3 +34,10 @@ def test_invalid_transition_raises(echo_agent: EchoAgent) -> None:
 
 
 @pytest.mark.asyncio
+async def test_terminated_agent_is_inert(echo_agent: EchoAgent) -> None:
+    echo_agent.terminate()
+    result = await echo_agent.step(world_state={})
+    assert result is None
+
+
+@pytest.mark.asyncio
