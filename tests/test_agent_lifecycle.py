@@ -28,3 +28,9 @@ async def test_energy_depletes_and_blocks(echo_agent: EchoAgent) -> None:
     assert echo_agent.state == AgentState.BLOCKED
 
 
+def test_invalid_transition_raises(echo_agent: EchoAgent) -> None:
+    with pytest.raises(InvalidTransition):
+        echo_agent._transition(AgentState.ACTING)
+
+
+@pytest.mark.asyncio
