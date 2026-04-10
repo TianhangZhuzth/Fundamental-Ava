@@ -52,3 +52,12 @@ _TRANSITIONS: dict[AgentState, frozenset[AgentState]] = {
 
 @dataclass(slots=True)
 class Percept:
+    """A single unit of sensory input delivered to an agent for one tick."""
+
+    source: str
+    payload: dict[str, Any]
+    timestamp: float = field(default_factory=time.time)
+
+
+@dataclass(slots=True)
+class Action:
