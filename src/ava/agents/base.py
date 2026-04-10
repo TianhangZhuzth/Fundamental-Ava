@@ -44,3 +44,11 @@ _TRANSITIONS: dict[AgentState, frozenset[AgentState]] = {
     AgentState.IDLE: frozenset({AgentState.PERCEIVING, AgentState.TERMINATED}),
     AgentState.PERCEIVING: frozenset({AgentState.DELIBERATING, AgentState.BLOCKED}),
     AgentState.DELIBERATING: frozenset({AgentState.ACTING, AgentState.BLOCKED}),
+    AgentState.ACTING: frozenset({AgentState.IDLE, AgentState.BLOCKED}),
+    AgentState.BLOCKED: frozenset({AgentState.IDLE, AgentState.TERMINATED}),
+    AgentState.TERMINATED: frozenset(),
+}
+
+
+@dataclass(slots=True)
+class Percept:
