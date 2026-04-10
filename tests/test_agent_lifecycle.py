@@ -41,3 +41,6 @@ async def test_terminated_agent_is_inert(echo_agent: EchoAgent) -> None:
 
 
 @pytest.mark.asyncio
+async def test_episodic_memory_records_actions(echo_agent: EchoAgent) -> None:
+    await echo_agent.step(world_state={})
+    assert len(echo_agent.memory.episodic) == 1
