@@ -61,3 +61,7 @@ class Percept:
 
 @dataclass(slots=True)
 class Action:
+    """An action emitted by an agent's deliberation step."""
+
+    kind: str
+    payload: dict[str, Any]
