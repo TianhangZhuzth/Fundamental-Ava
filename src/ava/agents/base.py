@@ -80,3 +80,8 @@ class AgentSnapshot:
 
 
 class AgentCore(ABC):
+    """Base class for all agents participating in a Civilization.
+
+    Subclasses must implement `deliberate`. Everything else (state
+    transitions, memory writes, message dispatch) is handled here so that
+    every concrete agent type behaves consistently under the scheduler.
