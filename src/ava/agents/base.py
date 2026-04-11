@@ -85,3 +85,7 @@ class AgentCore(ABC):
     Subclasses must implement `deliberate`. Everything else (state
     transitions, memory writes, message dispatch) is handled here so that
     every concrete agent type behaves consistently under the scheduler.
+    """
+
+    def __init__(
+        self,
