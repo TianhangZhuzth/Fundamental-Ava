@@ -65,3 +65,12 @@ class Action:
 
     kind: str
     payload: dict[str, Any]
+    confidence: float = 1.0
+
+
+@dataclass(slots=True)
+class AgentSnapshot:
+    """Point-in-time view of an agent, used for tracing and analysis."""
+
+    agent_id: str
+    state: AgentState
