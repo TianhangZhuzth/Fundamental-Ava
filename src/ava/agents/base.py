@@ -74,3 +74,9 @@ class AgentSnapshot:
 
     agent_id: str
     state: AgentState
+    tick: int
+    last_action: Action | None
+    energy: float
+
+
+class AgentCore(ABC):
