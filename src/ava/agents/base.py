@@ -98,3 +98,9 @@ class AgentCore(ABC):
     ) -> None:
         self.id = agent_id or str(uuid.uuid4())
         self.name = name
+        self.bus = bus
+        self.memory = memory or MemoryStore(owner_id=self.id)
+        self.state = AgentState.IDLE
+        self.energy = initial_energy
+        self.tick: int = 0
+        self.last_action: Action | None = None
