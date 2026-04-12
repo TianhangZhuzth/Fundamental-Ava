@@ -104,3 +104,10 @@ class AgentCore(ABC):
         self.energy = initial_energy
         self.tick: int = 0
         self.last_action: Action | None = None
+        self._on_state_change: list[Callable[[AgentState, AgentState], Awaitable[None]]] = []
+        self.bus.subscribe(self.id, self._inbox)
+        self._inbox_queue: list[Message] = []
+
+    async def _inbox(self, message: Message) -> None:
+        self._inbox_queue.append(message)
+
