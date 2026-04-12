@@ -111,3 +111,11 @@ class AgentCore(ABC):
     async def _inbox(self, message: Message) -> None:
         self._inbox_queue.append(message)
 
+    def _transition(self, target: AgentState) -> None:
+        allowed = _TRANSITIONS[self.state]
+        if target not in allowed:
+            raise InvalidTransition(
+                f"agent {self.id} cannot move {self.state.value} -> {target.value}"
+            )
+        previous, self.state = self.state, target
+        log.debug("agent.transition", agent_id=self.id, frm=previous.value, to=target.value)
