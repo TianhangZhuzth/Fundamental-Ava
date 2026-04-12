@@ -89,3 +89,12 @@ class AgentCore(ABC):
 
     def __init__(
         self,
+        name: str,
+        *,
+        bus: MessageBus,
+        memory: MemoryStore | None = None,
+        initial_energy: float = 100.0,
+        agent_id: str | None = None,
+    ) -> None:
+        self.id = agent_id or str(uuid.uuid4())
+        self.name = name
