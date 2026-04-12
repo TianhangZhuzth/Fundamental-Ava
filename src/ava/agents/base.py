@@ -119,3 +119,12 @@ class AgentCore(ABC):
             )
         previous, self.state = self.state, target
         log.debug("agent.transition", agent_id=self.id, frm=previous.value, to=target.value)
+
+    async def step(self, world_state: dict[str, Any]) -> Action | None:
+        """Run one full perceive -> deliberate -> act cycle."""
+        if self.state == AgentState.TERMINATED:
+            return None
+
+        self.tick += 1
+        self._transition(AgentState.PERCEIVING)
+        percepts = self._collect_percepts(world_state)
