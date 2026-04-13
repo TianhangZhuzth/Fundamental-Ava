@@ -149,3 +149,10 @@ class AgentCore(ABC):
     def _collect_percepts(self, world_state: dict[str, Any]) -> list[Percept]:
         percepts = [Percept(source="world", payload=world_state)]
         while self._inbox_queue:
+            msg = self._inbox_queue.pop(0)
+            percepts.append(Percept(source=f"agent:{msg.sender_id}", payload=msg.body))
+        return percepts
+
+    async def _apply_action(self, action: Action) -> None:
+        cost = float(action.payload.get("energy_cost", 1.0))
+        self.energy = max(0.0, self.energy - cost)
