@@ -128,3 +128,11 @@ class AgentCore(ABC):
         self.tick += 1
         self._transition(AgentState.PERCEIVING)
         percepts = self._collect_percepts(world_state)
+
+        self._transition(AgentState.DELIBERATING)
+        try:
+            action = await self.deliberate(percepts, world_state)
+        except Exception:
+            log.exception("agent.deliberate_failed", agent_id=self.id)
+            self._transition(AgentState.BLOCKED)
+            self._transition(AgentState.IDLE)
