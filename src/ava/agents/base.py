@@ -136,3 +136,10 @@ class AgentCore(ABC):
             log.exception("agent.deliberate_failed", agent_id=self.id)
             self._transition(AgentState.BLOCKED)
             self._transition(AgentState.IDLE)
+            return None
+
+        self._transition(AgentState.ACTING)
+        if action is not None:
+            await self._apply_action(action)
+        self.last_action = action
+
