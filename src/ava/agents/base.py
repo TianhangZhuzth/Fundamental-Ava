@@ -143,3 +143,9 @@ class AgentCore(ABC):
             await self._apply_action(action)
         self.last_action = action
 
+        self._transition(AgentState.IDLE)
+        return action
+
+    def _collect_percepts(self, world_state: dict[str, Any]) -> list[Percept]:
+        percepts = [Percept(source="world", payload=world_state)]
+        while self._inbox_queue:
