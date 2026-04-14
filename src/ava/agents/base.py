@@ -156,3 +156,7 @@ class AgentCore(ABC):
     async def _apply_action(self, action: Action) -> None:
         cost = float(action.payload.get("energy_cost", 1.0))
         self.energy = max(0.0, self.energy - cost)
+        self.memory.episodic.record(
+            event_type=action.kind,
+            content=action.payload,
+            tick=self.tick,
