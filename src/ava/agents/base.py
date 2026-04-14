@@ -169,3 +169,8 @@ class AgentCore(ABC):
         self, percepts: list[Percept], world_state: dict[str, Any]
     ) -> Action | None:
         """Decide on the next action given current percepts and world state."""
+        raise NotImplementedError
+
+    def terminate(self) -> None:
+        self.bus.unsubscribe(self.id)
+        if self.state != AgentState.TERMINATED:
