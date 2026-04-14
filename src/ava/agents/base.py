@@ -165,3 +165,7 @@ class AgentCore(ABC):
             self._transition(AgentState.BLOCKED)
 
     @abstractmethod
+    async def deliberate(
+        self, percepts: list[Percept], world_state: dict[str, Any]
+    ) -> Action | None:
+        """Decide on the next action given current percepts and world state."""
