@@ -160,3 +160,8 @@ class AgentCore(ABC):
             event_type=action.kind,
             content=action.payload,
             tick=self.tick,
+        )
+        if self.energy <= 0.0:
+            self._transition(AgentState.BLOCKED)
+
+    @abstractmethod
