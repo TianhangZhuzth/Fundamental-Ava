@@ -191,3 +191,4 @@ class AgentCore(ABC):
         self._on_state_change.append(callback)
 
     def __repr__(self) -> str:
+        return f"<{type(self).__name__} id={self.id[:8]} state={self.state.value}>"
