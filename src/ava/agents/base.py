@@ -182,3 +182,12 @@ class AgentCore(ABC):
             state=self.state,
             tick=self.tick,
             last_action=self.last_action,
+            energy=self.energy,
+        )
+
+    def on_state_change(
+        self, callback: Callable[[AgentState, AgentState], Awaitable[None]]
+    ) -> None:
+        self._on_state_change.append(callback)
+
+    def __repr__(self) -> str:
