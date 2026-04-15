@@ -174,3 +174,11 @@ class AgentCore(ABC):
     def terminate(self) -> None:
         self.bus.unsubscribe(self.id)
         if self.state != AgentState.TERMINATED:
+            self.state = AgentState.TERMINATED
+
+    def snapshot(self) -> AgentSnapshot:
+        return AgentSnapshot(
+            agent_id=self.id,
+            state=self.state,
+            tick=self.tick,
+            last_action=self.last_action,
