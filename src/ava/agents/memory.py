@@ -16,3 +16,9 @@ from typing import Any
 
 import numpy as np
 
+
+@dataclass(slots=True)
+class EpisodicEvent:
+    event_type: str
+    content: dict[str, Any]
+    tick: int
