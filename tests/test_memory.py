@@ -26,3 +26,8 @@ def test_importance_scoring_weights_critical_events() -> None:
     critical = memory.record(event_type="fight", content={"conflict": True}, tick=1)
     assert critical.importance > routine.importance
 
+
+def test_procedural_memory_reinforcement_converges() -> None:
+    procedural = ProceduralMemory(learning_rate=0.5)
+    procedural.learn(
+        Skill(name="forage", trigger_conditions={"biome": "forest"}, action_sequence=[])
