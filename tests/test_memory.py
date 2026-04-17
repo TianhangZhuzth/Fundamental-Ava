@@ -18,3 +18,11 @@ def test_episodic_eviction_respects_capacity() -> None:
     for tick in range(50):
         memory.record(event_type="noop", content={}, tick=tick)
     assert len(memory) == 10
+
+
+def test_importance_scoring_weights_critical_events() -> None:
+    memory = EpisodicMemory()
+    routine = memory.record(event_type="walk", content={}, tick=0)
+    critical = memory.record(event_type="fight", content={"conflict": True}, tick=1)
+    assert critical.importance > routine.importance
+
