@@ -22,3 +22,10 @@ class EpisodicEvent:
     event_type: str
     content: dict[str, Any]
     tick: int
+    timestamp: float = field(default_factory=time.time)
+    importance: float = 0.0
+    embedding: np.ndarray[Any, Any] | None = None
+    last_accessed: float = field(default_factory=time.time)
+
+
+class EpisodicMemory:
