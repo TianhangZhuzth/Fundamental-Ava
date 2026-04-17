@@ -29,3 +29,11 @@ class EpisodicEvent:
 
 
 class EpisodicMemory:
+    """Append-only stream of timestamped events with recency/importance/
+    relevance retrieval, scored the way reflective generative agents do."""
+
+    def __init__(self, *, decay: float = 0.995, capacity: int = 5_000) -> None:
+        self.decay = decay
+        self.capacity = capacity
+        self._events: list[EpisodicEvent] = []
+
