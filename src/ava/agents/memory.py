@@ -37,3 +37,12 @@ class EpisodicMemory:
         self.capacity = capacity
         self._events: list[EpisodicEvent] = []
 
+    def record(
+        self,
+        *,
+        event_type: str,
+        content: dict[str, Any],
+        tick: int,
+        importance: float | None = None,
+        embedding: np.ndarray[Any, Any] | None = None,
+    ) -> EpisodicEvent:
