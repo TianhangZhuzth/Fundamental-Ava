@@ -31,3 +31,11 @@ def test_procedural_memory_reinforcement_converges() -> None:
     procedural = ProceduralMemory(learning_rate=0.5)
     procedural.learn(
         Skill(name="forage", trigger_conditions={"biome": "forest"}, action_sequence=[])
+    )
+    for _ in range(20):
+        procedural.reinforce("forage", success=True)
+
+    skill = procedural.best_match({"biome": "forest"})
+    assert skill is not None
+    assert skill.success_rate > 0.95
+
