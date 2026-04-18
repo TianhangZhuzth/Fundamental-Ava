@@ -46,3 +46,7 @@ class EpisodicMemory:
         importance: float | None = None,
         embedding: np.ndarray[Any, Any] | None = None,
     ) -> EpisodicEvent:
+        event = EpisodicEvent(
+            event_type=event_type,
+            content=content,
+            tick=tick,
