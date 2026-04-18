@@ -39,3 +39,8 @@ def test_procedural_memory_reinforcement_converges() -> None:
     assert skill is not None
     assert skill.success_rate > 0.95
 
+
+def test_reflect_promotes_high_importance_events_to_semantic_facts() -> None:
+    store = MemoryStore(owner_id="agent-1")
+    store.episodic.record(
+        event_type="alliance",
