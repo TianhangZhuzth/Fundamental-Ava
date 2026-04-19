@@ -50,3 +50,8 @@ class EpisodicMemory:
             event_type=event_type,
             content=content,
             tick=tick,
+            importance=importance if importance is not None else self._score_importance(content),
+            embedding=embedding,
+        )
+        self._events.append(event)
+        if len(self._events) > self.capacity:
