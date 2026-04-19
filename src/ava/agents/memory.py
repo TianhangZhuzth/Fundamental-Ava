@@ -55,3 +55,7 @@ class EpisodicMemory:
         )
         self._events.append(event)
         if len(self._events) > self.capacity:
+            self._evict()
+        return event
+
+    def _score_importance(self, content: dict[str, Any]) -> float:
