@@ -59,3 +59,10 @@ class EpisodicMemory:
         return event
 
     def _score_importance(self, content: dict[str, Any]) -> float:
+        # Heuristic fallback when no LLM-backed scorer is wired in: events
+        # touching survival-critical fields are weighted higher.
+        weight_keys = {"conflict", "death", "alliance", "discovery", "law"}
+        return 8.0 if weight_keys & content.keys() else 2.0
+
+    def _evict(self) -> None:
+        self._events.sort(key=lambda e: e.importance)
