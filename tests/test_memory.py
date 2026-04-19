@@ -44,3 +44,9 @@ def test_reflect_promotes_high_importance_events_to_semantic_facts() -> None:
     store = MemoryStore(owner_id="agent-1")
     store.episodic.record(
         event_type="alliance",
+        content={"alliance": True, "actor": "agent-1", "target": "agent-2"},
+        tick=0,
+    )
+    facts = store.reflect(now_tick=1)
+    assert len(facts) == 1
+    assert facts[0].predicate == "alliance"
