@@ -66,3 +66,7 @@ class EpisodicMemory:
 
     def _evict(self) -> None:
         self._events.sort(key=lambda e: e.importance)
+        self._events = self._events[len(self._events) - self.capacity :]
+
+    def retrieve(
+        self,
