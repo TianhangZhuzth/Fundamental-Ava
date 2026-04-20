@@ -75,3 +75,9 @@ class EpisodicMemory:
         now_tick: int,
         top_k: int = 10,
         recency_weight: float = 1.0,
+        importance_weight: float = 1.0,
+        relevance_weight: float = 1.0,
+    ) -> list[EpisodicEvent]:
+        if not self._events:
+            return []
+
