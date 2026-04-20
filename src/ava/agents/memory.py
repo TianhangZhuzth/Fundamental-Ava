@@ -81,3 +81,10 @@ class EpisodicMemory:
         if not self._events:
             return []
 
+        scored: list[tuple[float, EpisodicEvent]] = []
+        for event in self._events:
+            recency = self.decay ** max(0, now_tick - event.tick)
+            relevance = 0.0
+            if query_embedding is not None and event.embedding is not None:
+                relevance = _cosine_similarity(query_embedding, event.embedding)
+            score = (
