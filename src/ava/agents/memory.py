@@ -70,3 +70,8 @@ class EpisodicMemory:
 
     def retrieve(
         self,
+        *,
+        query_embedding: np.ndarray[Any, Any] | None,
+        now_tick: int,
+        top_k: int = 10,
+        recency_weight: float = 1.0,
