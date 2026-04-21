@@ -88,3 +88,11 @@ class EpisodicMemory:
             if query_embedding is not None and event.embedding is not None:
                 relevance = _cosine_similarity(query_embedding, event.embedding)
             score = (
+                recency_weight * recency
+                + importance_weight * (event.importance / 10.0)
+                + relevance_weight * relevance
+            )
+            scored.append((score, event))
+
+        scored.sort(key=lambda pair: pair[0], reverse=True)
+        top = [event for _, event in scored[:top_k]]
