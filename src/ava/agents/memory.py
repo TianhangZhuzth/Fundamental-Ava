@@ -111,3 +111,8 @@ class SemanticFact:
     obj: str
     confidence: float = 1.0
     source_event_ticks: tuple[int, ...] = ()
+
+
+class SemanticMemory:
+    """Distilled facts about the world, derived from episodic reflection."""
+
