@@ -96,3 +96,12 @@ class EpisodicMemory:
 
         scored.sort(key=lambda pair: pair[0], reverse=True)
         top = [event for _, event in scored[:top_k]]
+        for event in top:
+            event.last_accessed = time.time()
+        return top
+
+    def __len__(self) -> int:
+        return len(self._events)
+
+
+@dataclass(slots=True)
