@@ -105,3 +105,9 @@ class EpisodicMemory:
 
 
 @dataclass(slots=True)
+class SemanticFact:
+    subject: str
+    predicate: str
+    obj: str
+    confidence: float = 1.0
+    source_event_ticks: tuple[int, ...] = ()
