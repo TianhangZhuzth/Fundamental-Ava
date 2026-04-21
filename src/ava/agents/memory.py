@@ -116,3 +116,9 @@ class SemanticFact:
 class SemanticMemory:
     """Distilled facts about the world, derived from episodic reflection."""
 
+    def __init__(self) -> None:
+        self._facts: dict[tuple[str, str], SemanticFact] = {}
+
+    def upsert(self, fact: SemanticFact) -> None:
+        key = (fact.subject, fact.predicate)
+        existing = self._facts.get(key)
