@@ -131,3 +131,8 @@ class SemanticMemory:
         results = []
         for (subj, pred), fact in self._facts.items():
             if subject is not None and subj != subject:
+                continue
+            if predicate is not None and pred != predicate:
+                continue
+            results.append(fact)
+        return results
