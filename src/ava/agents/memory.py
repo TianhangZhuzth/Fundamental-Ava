@@ -127,3 +127,7 @@ class SemanticMemory:
 
     def query(
         self, *, subject: str | None = None, predicate: str | None = None
+    ) -> list[SemanticFact]:
+        results = []
+        for (subj, pred), fact in self._facts.items():
+            if subject is not None and subj != subject:
