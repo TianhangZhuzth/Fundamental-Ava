@@ -122,3 +122,8 @@ class SemanticMemory:
     def upsert(self, fact: SemanticFact) -> None:
         key = (fact.subject, fact.predicate)
         existing = self._facts.get(key)
+        if existing is None or fact.confidence >= existing.confidence:
+            self._facts[key] = fact
+
+    def query(
+        self, *, subject: str | None = None, predicate: str | None = None
