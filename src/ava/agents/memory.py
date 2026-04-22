@@ -136,3 +136,11 @@ class SemanticMemory:
                 continue
             results.append(fact)
         return results
+
+    def __len__(self) -> int:
+        return len(self._facts)
+
+
+@dataclass(slots=True)
+class Skill:
+    name: str
