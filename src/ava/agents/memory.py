@@ -151,3 +151,9 @@ class Skill:
 
 
 class ProceduralMemory:
+    """Reusable action sequences ("skills") learned from repeated success.
+
+    Skills are reinforced via an exponential moving average over outcomes,
+    which lets agents prefer plans that have historically worked without
+    discarding a skill after a single bad roll.
+    """
