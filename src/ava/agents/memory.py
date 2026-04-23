@@ -166,3 +166,9 @@ class ProceduralMemory:
         self._skills[skill.name] = skill
 
     def reinforce(self, name: str, *, success: bool) -> None:
+        skill = self._skills.get(name)
+        if skill is None:
+            return
+        target = 1.0 if success else 0.0
+        skill.success_rate += self.learning_rate * (target - skill.success_rate)
+        skill.uses += 1
