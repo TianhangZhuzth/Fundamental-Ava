@@ -144,3 +144,10 @@ class SemanticMemory:
 @dataclass(slots=True)
 class Skill:
     name: str
+    trigger_conditions: dict[str, Any]
+    action_sequence: list[dict[str, Any]]
+    success_rate: float = 0.5
+    uses: int = 0
+
+
+class ProceduralMemory:
