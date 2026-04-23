@@ -157,3 +157,12 @@ class ProceduralMemory:
     which lets agents prefer plans that have historically worked without
     discarding a skill after a single bad roll.
     """
+
+    def __init__(self, *, learning_rate: float = 0.2) -> None:
+        self.learning_rate = learning_rate
+        self._skills: dict[str, Skill] = {}
+
+    def learn(self, skill: Skill) -> None:
+        self._skills[skill.name] = skill
+
+    def reinforce(self, name: str, *, success: bool) -> None:
