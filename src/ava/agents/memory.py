@@ -202,3 +202,12 @@ class MemoryStore:
         This is a simplified analogue of the reflection step in generative
         agent architectures: pull the most salient recent events and turn
         repeated co-occurrences into durable facts.
+        """
+        salient = self.episodic.retrieve(query_embedding=None, now_tick=now_tick, top_k=top_k)
+        derived: list[SemanticFact] = []
+        for event in salient:
+            if event.importance < 6.0:
+                continue
+            fact = SemanticFact(
+                subject=str(event.content.get("actor", self.owner_id)),
+                predicate=event.event_type,
