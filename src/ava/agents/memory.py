@@ -172,3 +172,12 @@ class ProceduralMemory:
         target = 1.0 if success else 0.0
         skill.success_rate += self.learning_rate * (target - skill.success_rate)
         skill.uses += 1
+
+    def best_match(self, world_state: dict[str, Any]) -> Skill | None:
+        candidates = [
+            skill
+            for skill in self._skills.values()
+            if all(world_state.get(k) == v for k, v in skill.trigger_conditions.items())
+        ]
+        if not candidates:
+            return None
