@@ -181,3 +181,9 @@ class ProceduralMemory:
         ]
         if not candidates:
             return None
+        return max(candidates, key=lambda s: s.success_rate)
+
+    def __len__(self) -> int:
+        return len(self._skills)
+
+
