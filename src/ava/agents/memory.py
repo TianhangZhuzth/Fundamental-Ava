@@ -187,3 +187,12 @@ class ProceduralMemory:
         return len(self._skills)
 
 
+class MemoryStore:
+    """Aggregate of an agent's episodic, semantic, and procedural memory."""
+
+    def __init__(self, *, owner_id: str) -> None:
+        self.owner_id = owner_id
+        self.episodic = EpisodicMemory()
+        self.semantic = SemanticMemory()
+        self.procedural = ProceduralMemory()
+
