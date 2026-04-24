@@ -196,3 +196,9 @@ class MemoryStore:
         self.semantic = SemanticMemory()
         self.procedural = ProceduralMemory()
 
+    def reflect(self, *, now_tick: int, top_k: int = 20) -> list[SemanticFact]:
+        """Distill recent high-importance episodes into semantic facts.
+
+        This is a simplified analogue of the reflection step in generative
+        agent architectures: pull the most salient recent events and turn
+        repeated co-occurrences into durable facts.
