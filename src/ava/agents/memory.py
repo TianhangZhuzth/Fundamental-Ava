@@ -211,3 +211,11 @@ class MemoryStore:
             fact = SemanticFact(
                 subject=str(event.content.get("actor", self.owner_id)),
                 predicate=event.event_type,
+                obj=str(event.content.get("target", "world")),
+                confidence=min(1.0, event.importance / 10.0),
+                source_event_ticks=(event.tick,),
+            )
+            self.semantic.upsert(fact)
+            derived.append(fact)
+        return derived
+
