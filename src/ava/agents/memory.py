@@ -219,3 +219,7 @@ class MemoryStore:
             derived.append(fact)
         return derived
 
+
+def _cosine_similarity(a: np.ndarray[Any, Any], b: np.ndarray[Any, Any]) -> float:
+    denom = (np.linalg.norm(a) * np.linalg.norm(b)) or math.inf
+    return float(np.dot(a, b) / denom) if denom != math.inf else 0.0
