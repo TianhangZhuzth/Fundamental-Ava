@@ -28,3 +28,8 @@ class Belief:
         self.confidence = min(1.0, max(0.0, self.confidence))
         self.evidence_count += 1
 
+
+class BeliefSystem:
+    """A bounded set of probabilistic beliefs an agent holds about the world.
+
+    Beliefs decay toward neutral (0.5) over time absent reinforcement,
