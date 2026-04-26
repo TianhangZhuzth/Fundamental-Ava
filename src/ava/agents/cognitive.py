@@ -33,3 +33,7 @@ class BeliefSystem:
     """A bounded set of probabilistic beliefs an agent holds about the world.
 
     Beliefs decay toward neutral (0.5) over time absent reinforcement,
+    which keeps stale assumptions from dominating decisions indefinitely.
+    """
+
+    def __init__(self, *, decay_rate: float = 0.01) -> None:
