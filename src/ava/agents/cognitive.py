@@ -24,3 +24,7 @@ class Belief:
 
     def update(self, *, observed: bool, weight: float = 0.3) -> None:
         target = 1.0 if observed else 0.0
+        self.confidence += weight * (target - self.confidence)
+        self.confidence = min(1.0, max(0.0, self.confidence))
+        self.evidence_count += 1
+
