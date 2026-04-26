@@ -15,3 +15,12 @@ import structlog
 
 log = structlog.get_logger(__name__)
 
+
+@dataclass(slots=True)
+class Belief:
+    statement: str
+    confidence: float
+    evidence_count: int = 1
+
+    def update(self, *, observed: bool, weight: float = 0.3) -> None:
+        target = 1.0 if observed else 0.0
