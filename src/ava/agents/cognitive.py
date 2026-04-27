@@ -57,3 +57,9 @@ class BeliefSystem:
         belief = self._beliefs.get(statement)
         return belief.confidence if belief else 0.5
 
+    def strongest(self, n: int = 5) -> list[Belief]:
+        ranked = sorted(self._beliefs.values(), key=lambda b: abs(b.confidence - 0.5), reverse=True)
+        return ranked[:n]
+
+    def __len__(self) -> int:
+        return len(self._beliefs)
