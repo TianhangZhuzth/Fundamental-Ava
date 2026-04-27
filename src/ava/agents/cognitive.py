@@ -37,3 +37,10 @@ class BeliefSystem:
     """
 
     def __init__(self, *, decay_rate: float = 0.01) -> None:
+        self.decay_rate = decay_rate
+        self._beliefs: dict[str, Belief] = {}
+
+    def assert_belief(self, statement: str, *, confidence: float = 0.5) -> Belief:
+        belief = self._beliefs.setdefault(statement, Belief(statement, confidence))
+        return belief
+
