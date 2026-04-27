@@ -44,3 +44,7 @@ class BeliefSystem:
         belief = self._beliefs.setdefault(statement, Belief(statement, confidence))
         return belief
 
+    def observe(self, statement: str, *, true: bool) -> Belief:
+        belief = self._beliefs.get(statement) or self.assert_belief(statement)
+        belief.update(observed=true)
+        return belief
