@@ -48,3 +48,12 @@ class BeliefSystem:
         belief = self._beliefs.get(statement) or self.assert_belief(statement)
         belief.update(observed=true)
         return belief
+
+    def decay_all(self) -> None:
+        for belief in self._beliefs.values():
+            belief.confidence += self.decay_rate * (0.5 - belief.confidence)
+
+    def confidence_in(self, statement: str) -> float:
+        belief = self._beliefs.get(statement)
+        return belief.confidence if belief else 0.5
+
