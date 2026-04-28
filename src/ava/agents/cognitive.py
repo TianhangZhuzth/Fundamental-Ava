@@ -70,3 +70,9 @@ class Goal:
     name: str
     utility_fn: Any  # Callable[[dict[str, Any], BeliefSystem], float]
     priority: float = 1.0
+
+
+@dataclass(slots=True)
+class CandidateAction:
+    kind: str
+    payload: dict[str, Any]
