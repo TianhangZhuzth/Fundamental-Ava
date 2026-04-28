@@ -76,3 +76,10 @@ class Goal:
 class CandidateAction:
     kind: str
     payload: dict[str, Any]
+    expected_utility: float = 0.0
+
+
+class CognitiveArchitecture:
+    """Goal-directed deliberation layered on top of a BeliefSystem.
+
+    Each tick, registered goals score the candidate action set under
