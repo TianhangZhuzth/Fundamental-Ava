@@ -83,3 +83,11 @@ class CognitiveArchitecture:
     """Goal-directed deliberation layered on top of a BeliefSystem.
 
     Each tick, registered goals score the candidate action set under
+    current beliefs; the highest expected-utility action wins, with a
+    softmax fallback to avoid agents getting deterministically stuck in
+    local optima across long simulations.
+    """
+
+    def __init__(self, *, beliefs: BeliefSystem | None = None, temperature: float = 0.15) -> None:
+        self.beliefs = beliefs or BeliefSystem()
+        self.temperature = temperature
