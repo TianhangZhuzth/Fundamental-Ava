@@ -63,3 +63,10 @@ class BeliefSystem:
 
     def __len__(self) -> int:
         return len(self._beliefs)
+
+
+@dataclass(slots=True)
+class Goal:
+    name: str
+    utility_fn: Any  # Callable[[dict[str, Any], BeliefSystem], float]
+    priority: float = 1.0
