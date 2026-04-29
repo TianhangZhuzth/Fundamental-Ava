@@ -108,3 +108,10 @@ class CognitiveArchitecture:
             )
         return self._select(candidates)
 
+    def _select(self, candidates: list[CandidateAction]) -> CandidateAction:
+        if self.temperature <= 0.0:
+            return max(candidates, key=lambda c: c.expected_utility)
+
+        import random
+
+        weights = [c.expected_utility / self.temperature for c in candidates]
