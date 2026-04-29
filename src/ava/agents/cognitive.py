@@ -100,3 +100,11 @@ class CognitiveArchitecture:
         self, candidates: list[CandidateAction], world_state: dict[str, Any]
     ) -> CandidateAction | None:
         if not candidates:
+            return None
+        for candidate in candidates:
+            candidate.expected_utility = sum(
+                goal.priority * goal.utility_fn(candidate.payload | world_state, self.beliefs)
+                for goal in self.goals
+            )
+        return self._select(candidates)
+
