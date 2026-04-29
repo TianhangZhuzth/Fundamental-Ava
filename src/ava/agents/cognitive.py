@@ -91,3 +91,12 @@ class CognitiveArchitecture:
     def __init__(self, *, beliefs: BeliefSystem | None = None, temperature: float = 0.15) -> None:
         self.beliefs = beliefs or BeliefSystem()
         self.temperature = temperature
+        self.goals: list[Goal] = []
+
+    def add_goal(self, goal: Goal) -> None:
+        self.goals.append(goal)
+
+    def evaluate(
+        self, candidates: list[CandidateAction], world_state: dict[str, Any]
+    ) -> CandidateAction | None:
+        if not candidates:
