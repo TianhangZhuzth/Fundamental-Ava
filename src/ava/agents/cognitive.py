@@ -115,3 +115,7 @@ class CognitiveArchitecture:
         import random
 
         weights = [c.expected_utility / self.temperature for c in candidates]
+        max_w = max(weights)
+        exp_weights = [pow(2.718281828, w - max_w) for w in weights]
+        total = sum(exp_weights)
+        probs = [w / total for w in exp_weights]
