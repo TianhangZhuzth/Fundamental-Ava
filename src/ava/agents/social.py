@@ -18,3 +18,11 @@ class Relationship:
     other_id: str
     trust: float = 0.5
     affinity: float = 0.0  # -1 (hostile) .. 1 (allied)
+    interaction_count: int = 0
+    reputation_estimate: float = 0.5
+
+    def record_interaction(self, *, outcome: float, weight: float = 0.25) -> None:
+        """outcome in [-1, 1]: negative for harm, positive for cooperation."""
+        self.affinity += weight * (outcome - self.affinity)
+        self.affinity = min(1.0, max(-1.0, self.affinity))
+        self.trust += weight * ((outcome + 1) / 2 - self.trust)
