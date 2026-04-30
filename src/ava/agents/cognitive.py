@@ -119,3 +119,4 @@ class CognitiveArchitecture:
         exp_weights = [pow(2.718281828, w - max_w) for w in weights]
         total = sum(exp_weights)
         probs = [w / total for w in exp_weights]
+        return random.choices(candidates, weights=probs, k=1)[0]
