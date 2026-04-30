@@ -11,3 +11,10 @@ recursion).
 from __future__ import annotations
 
 from dataclasses import dataclass
+
+
+@dataclass(slots=True)
+class Relationship:
+    other_id: str
+    trust: float = 0.5
+    affinity: float = 0.0  # -1 (hostile) .. 1 (allied)
