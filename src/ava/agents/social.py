@@ -46,3 +46,9 @@ class TheoryOfMind:
         model = self._models.setdefault(other_id, {})
         key = f"intends:{observed_action}"
         prior = model.get(key, 0.0)
+        model[key] = prior + confidence * (1.0 - prior)
+
+    def estimate(self, other_id: str, intent: str) -> float:
+        return self._models.get(other_id, {}).get(f"intends:{intent}", 0.0)
+
+    def predict_next_action(self, other_id: str) -> str | None:
