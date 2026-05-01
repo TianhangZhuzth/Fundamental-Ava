@@ -35,3 +35,9 @@ class TheoryOfMind:
 
     Stores per-other-agent estimates that are updated from observed
     actions rather than asserted directly, mirroring how an observer
+    would infer intent from behavior alone.
+    """
+
+    def __init__(self, *, self_id: str) -> None:
+        self.self_id = self_id
+        self._models: dict[str, dict[str, float]] = {}
