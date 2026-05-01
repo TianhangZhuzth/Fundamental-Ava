@@ -26,3 +26,12 @@ class Relationship:
         self.affinity += weight * (outcome - self.affinity)
         self.affinity = min(1.0, max(-1.0, self.affinity))
         self.trust += weight * ((outcome + 1) / 2 - self.trust)
+        self.trust = min(1.0, max(0.0, self.trust))
+        self.interaction_count += 1
+
+
+class TheoryOfMind:
+    """Depth-1 model of what another agent believes, intends, and wants.
+
+    Stores per-other-agent estimates that are updated from observed
+    actions rather than asserted directly, mirroring how an observer
