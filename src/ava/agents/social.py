@@ -41,3 +41,8 @@ class TheoryOfMind:
     def __init__(self, *, self_id: str) -> None:
         self.self_id = self_id
         self._models: dict[str, dict[str, float]] = {}
+
+    def infer_intent(self, other_id: str, observed_action: str, *, confidence: float = 0.5) -> None:
+        model = self._models.setdefault(other_id, {})
+        key = f"intends:{observed_action}"
+        prior = model.get(key, 0.0)
