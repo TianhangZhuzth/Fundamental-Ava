@@ -72,3 +72,11 @@ class SocialModel:
 
     def update_from_interaction(
         self, other_id: str, *, action_kind: str, outcome: float
+    ) -> Relationship:
+        rel = self.relationship_with(other_id)
+        rel.record_interaction(outcome=outcome)
+        self.tom.infer_intent(other_id, action_kind, confidence=abs(outcome))
+        return rel
+
+    def allies(self, *, threshold: float = 0.5) -> list[str]:
+        return [
