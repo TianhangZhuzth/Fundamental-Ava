@@ -57,3 +57,11 @@ class TheoryOfMind:
             return None
         best = max(model.items(), key=lambda kv: kv[1])
         return best[0].removeprefix("intends:") if best[1] > 0.3 else None
+
+
+class SocialModel:
+    """Aggregates relationships and theory-of-mind for one agent."""
+
+    def __init__(self, *, self_id: str) -> None:
+        self.self_id = self_id
+        self.tom = TheoryOfMind(self_id=self_id)
