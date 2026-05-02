@@ -65,3 +65,10 @@ class SocialModel:
     def __init__(self, *, self_id: str) -> None:
         self.self_id = self_id
         self.tom = TheoryOfMind(self_id=self_id)
+        self._relationships: dict[str, Relationship] = {}
+
+    def relationship_with(self, other_id: str) -> Relationship:
+        return self._relationships.setdefault(other_id, Relationship(other_id=other_id))
+
+    def update_from_interaction(
+        self, other_id: str, *, action_kind: str, outcome: float
