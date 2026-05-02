@@ -52,3 +52,8 @@ class TheoryOfMind:
         return self._models.get(other_id, {}).get(f"intends:{intent}", 0.0)
 
     def predict_next_action(self, other_id: str) -> str | None:
+        model = self._models.get(other_id)
+        if not model:
+            return None
+        best = max(model.items(), key=lambda kv: kv[1])
+        return best[0].removeprefix("intends:") if best[1] > 0.3 else None
