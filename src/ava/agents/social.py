@@ -85,3 +85,7 @@ class SocialModel:
             if rel.affinity >= threshold and rel.trust >= threshold
         ]
 
+    def rivals(self, *, threshold: float = -0.3) -> list[str]:
+        return [
+            other_id for other_id, rel in self._relationships.items() if rel.affinity <= threshold
+        ]
