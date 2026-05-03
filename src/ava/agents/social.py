@@ -89,3 +89,9 @@ class SocialModel:
         return [
             other_id for other_id, rel in self._relationships.items() if rel.affinity <= threshold
         ]
+
+    def social_graph_weights(self) -> dict[str, float]:
+        return {
+            other_id: (rel.affinity + rel.trust) / 2
+            for other_id, rel in self._relationships.items()
+        }
