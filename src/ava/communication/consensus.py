@@ -20,3 +20,7 @@ from typing import Any
 import structlog
 
 log = structlog.get_logger(__name__)
+
+
+class ConsensusError(RuntimeError):
+    """Raised when a proposal cannot reach quorum."""
