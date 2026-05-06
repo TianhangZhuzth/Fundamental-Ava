@@ -24,3 +24,12 @@ log = structlog.get_logger(__name__)
 
 class ConsensusError(RuntimeError):
     """Raised when a proposal cannot reach quorum."""
+
+
+class Phase(Enum):
+    PROPOSE = "propose"
+    PREPARE = "prepare"
+    COMMIT = "commit"
+
+
+@dataclass(slots=True)
