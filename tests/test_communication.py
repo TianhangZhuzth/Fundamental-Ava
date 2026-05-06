@@ -19,3 +19,10 @@ async def test_direct_message_delivered_to_recipient(bus: MessageBus) -> None:
 
     async def handler(message: Message) -> None:
         received.append(message)
+
+    bus.subscribe("agent-b", handler)
+    count = await bus.publish(
+        Message(sender_id="agent-a", recipient_id="agent-b", body={"hi": True})
+    )
+    assert count == 1
+    assert received[0].body == {"hi": True}
