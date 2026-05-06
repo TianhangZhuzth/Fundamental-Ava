@@ -18,3 +18,11 @@ from dataclasses import dataclass, field
 from typing import Any
 
 import structlog
+
+log = structlog.get_logger(__name__)
+
+Subscriber = Callable[["Message"], Awaitable[None]]
+
+
+class MessageType(enum.Enum):
+    DIRECT = "direct"
