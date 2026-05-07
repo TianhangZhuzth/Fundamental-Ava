@@ -33,3 +33,7 @@ class Phase(Enum):
 
 
 @dataclass(slots=True)
+class Proposal:
+    id: str
+    proposer_id: str
+    payload: dict[str, Any]
