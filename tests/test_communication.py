@@ -32,3 +32,8 @@ async def test_direct_message_delivered_to_recipient(bus: MessageBus) -> None:
 async def test_broadcast_excludes_sender(bus: MessageBus) -> None:
     received_ids: list[str] = []
 
+    for agent_id in ("a", "b", "c"):
+        async def handler(message: Message, _id: str = agent_id) -> None:
+            received_ids.append(_id)
+
+        bus.subscribe(agent_id, handler)
