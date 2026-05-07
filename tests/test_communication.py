@@ -26,3 +26,9 @@ async def test_direct_message_delivered_to_recipient(bus: MessageBus) -> None:
     )
     assert count == 1
     assert received[0].body == {"hi": True}
+
+
+@pytest.mark.asyncio
+async def test_broadcast_excludes_sender(bus: MessageBus) -> None:
+    received_ids: list[str] = []
+
