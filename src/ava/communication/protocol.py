@@ -26,3 +26,12 @@ Subscriber = Callable[["Message"], Awaitable[None]]
 
 class MessageType(enum.Enum):
     DIRECT = "direct"
+    BROADCAST = "broadcast"
+    PROPOSAL = "proposal"
+    VOTE = "vote"
+    ANNOUNCE = "announce"
+
+
+@dataclass(slots=True)
+class Message:
+    sender_id: str
