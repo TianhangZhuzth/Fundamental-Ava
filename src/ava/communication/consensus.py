@@ -37,3 +37,8 @@ class Proposal:
     id: str
     proposer_id: str
     payload: dict[str, Any]
+    round_id: str = field(default_factory=lambda: str(uuid.uuid4()))
+
+
+VoteCollector = Callable[[Proposal, Phase], Awaitable[set[str]]]
+
