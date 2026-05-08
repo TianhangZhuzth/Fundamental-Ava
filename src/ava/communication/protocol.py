@@ -41,3 +41,12 @@ class Message:
     id: str = field(default_factory=lambda: str(uuid.uuid4()))
     timestamp: float = field(default_factory=time.time)
 
+
+class MessageBus:
+    """Pub/sub fabric connecting all agents in a Civilization.
+
+    Delivery is fire-and-forget from the sender's perspective: `publish`
+    schedules delivery coroutines and returns immediately, so a burst of
+    agent messages within one tick does not serialize on slow subscribers.
+    """
+
