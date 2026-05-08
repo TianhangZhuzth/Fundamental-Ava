@@ -42,3 +42,9 @@ class Proposal:
 
 VoteCollector = Callable[[Proposal, Phase], Awaitable[set[str]]]
 
+
+@dataclass(slots=True)
+class VoteTally:
+    prepare_votes: set[str] = field(default_factory=set)
+    commit_votes: set[str] = field(default_factory=set)
+
