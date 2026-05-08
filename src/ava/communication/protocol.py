@@ -35,3 +35,9 @@ class MessageType(enum.Enum):
 @dataclass(slots=True)
 class Message:
     sender_id: str
+    body: dict[str, Any]
+    type: MessageType = MessageType.DIRECT
+    recipient_id: str | None = None
+    id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    timestamp: float = field(default_factory=time.time)
+
