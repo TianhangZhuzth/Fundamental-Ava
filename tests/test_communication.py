@@ -37,3 +37,11 @@ async def test_broadcast_excludes_sender(bus: MessageBus) -> None:
             received_ids.append(_id)
 
         bus.subscribe(agent_id, handler)
+
+    count = await bus.publish(
+        Message(sender_id="a", body={}, type=MessageType.BROADCAST)
+    )
+    assert count == 2
+    assert "a" not in received_ids
+
+
