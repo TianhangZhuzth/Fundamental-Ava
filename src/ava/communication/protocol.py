@@ -50,3 +50,9 @@ class MessageBus:
     agent messages within one tick does not serialize on slow subscribers.
     """
 
+    def __init__(self, *, max_inbox: int = 1_000) -> None:
+        self.max_inbox = max_inbox
+        self._subscribers: dict[str, Subscriber] = {}
+        self._dropped: int = 0
+        self._delivered: int = 0
+
