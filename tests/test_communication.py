@@ -45,3 +45,12 @@ async def test_broadcast_excludes_sender(bus: MessageBus) -> None:
     assert "a" not in received_ids
 
 
+def test_quorum_math_matches_pbft_bound() -> None:
+    assert max_faulty(4) == 1
+    assert quorum_size(4) == 3
+    assert max_faulty(7) == 2
+    assert quorum_size(7) == 5
+
+
+@pytest.mark.asyncio
+async def test_consensus_commits_with_sufficient_votes() -> None:
