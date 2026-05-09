@@ -54,3 +54,11 @@ def test_quorum_math_matches_pbft_bound() -> None:
 
 @pytest.mark.asyncio
 async def test_consensus_commits_with_sufficient_votes() -> None:
+    participants = ["a", "b", "c", "d"]
+    consensus = RaftLikeConsensus(participants)
+
+    async def all_vote(_proposal: Proposal, _phase: Phase) -> set[str]:
+        return {"a", "b", "c"}
+
+    result = await consensus.propose(
+        Proposal(id="p1", proposer_id="a", payload={"rule": "share_water"}),
