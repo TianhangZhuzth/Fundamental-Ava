@@ -48,3 +48,8 @@ class VoteTally:
     prepare_votes: set[str] = field(default_factory=set)
     commit_votes: set[str] = field(default_factory=set)
 
+
+def max_faulty(n_participants: int) -> int:
+    """Largest f such that n_participants >= 3f + 1."""
+    return max(0, (n_participants - 1) // 3)
+
