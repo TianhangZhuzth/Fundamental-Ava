@@ -57,3 +57,10 @@ def max_faulty(n_participants: int) -> int:
 def quorum_size(n_participants: int) -> int:
     """Minimum votes required: 2f + 1."""
     f = max_faulty(n_participants)
+    return 2 * f + 1
+
+
+class RaftLikeConsensus:
+    """Three-phase BFT-style consensus over a fixed agent set.
+
+    Despite the name (kept for familiarity with operators used to Raft
