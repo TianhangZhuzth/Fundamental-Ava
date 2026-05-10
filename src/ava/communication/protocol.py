@@ -56,3 +56,10 @@ class MessageBus:
         self._dropped: int = 0
         self._delivered: int = 0
 
+    def subscribe(self, agent_id: str, callback: Subscriber) -> None:
+        self._subscribers[agent_id] = callback
+
+    def unsubscribe(self, agent_id: str) -> None:
+        self._subscribers.pop(agent_id, None)
+
+    async def publish(self, message: Message) -> int:
