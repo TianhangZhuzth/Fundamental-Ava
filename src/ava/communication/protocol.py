@@ -63,3 +63,9 @@ class MessageBus:
         self._subscribers.pop(agent_id, None)
 
     async def publish(self, message: Message) -> int:
+        """Deliver a message; returns number of recipients reached."""
+        targets = self._resolve_targets(message)
+        if not targets:
+            self._dropped += 1
+            return 0
+
