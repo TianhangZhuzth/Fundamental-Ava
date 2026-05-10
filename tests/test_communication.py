@@ -62,3 +62,8 @@ async def test_consensus_commits_with_sufficient_votes() -> None:
 
     result = await consensus.propose(
         Proposal(id="p1", proposer_id="a", payload={"rule": "share_water"}),
+        vote_collector=all_vote,
+    )
+    assert result == {"rule": "share_water"}
+    assert consensus.is_decided("p1")
+
