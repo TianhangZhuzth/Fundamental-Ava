@@ -53,3 +53,7 @@ def max_faulty(n_participants: int) -> int:
     """Largest f such that n_participants >= 3f + 1."""
     return max(0, (n_participants - 1) // 3)
 
+
+def quorum_size(n_participants: int) -> int:
+    """Minimum votes required: 2f + 1."""
+    f = max_faulty(n_participants)
