@@ -67,3 +67,7 @@ async def test_consensus_commits_with_sufficient_votes() -> None:
     assert result == {"rule": "share_water"}
     assert consensus.is_decided("p1")
 
+
+@pytest.mark.asyncio
+async def test_consensus_fails_without_quorum() -> None:
+    participants = ["a", "b", "c", "d"]
