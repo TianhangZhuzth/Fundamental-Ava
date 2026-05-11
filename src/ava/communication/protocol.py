@@ -69,3 +69,8 @@ class MessageBus:
             self._dropped += 1
             return 0
 
+        results = await asyncio.gather(
+            *(self._deliver_one(agent_id, message) for agent_id in targets),
+            return_exceptions=True,
+        )
+        delivered = sum(1 for r in results if r is True)
