@@ -64,3 +64,7 @@ class RaftLikeConsensus:
     """Three-phase BFT-style consensus over a fixed agent set.
 
     Despite the name (kept for familiarity with operators used to Raft
+    terminology), the quorum math follows PBFT: commits require 2f+1
+    matching votes out of n = 3f+1, tolerating f Byzantine participants
+    rather than only crash failures.
+    """
