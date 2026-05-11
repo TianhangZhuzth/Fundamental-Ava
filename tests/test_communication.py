@@ -71,3 +71,8 @@ async def test_consensus_commits_with_sufficient_votes() -> None:
 @pytest.mark.asyncio
 async def test_consensus_fails_without_quorum() -> None:
     participants = ["a", "b", "c", "d"]
+    consensus = RaftLikeConsensus(participants)
+
+    async def one_vote(_proposal: Proposal, _phase: Phase) -> set[str]:
+        return {"a"}
+
