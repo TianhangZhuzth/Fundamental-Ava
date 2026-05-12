@@ -78,3 +78,10 @@ class MessageBus:
         return delivered
 
     def _resolve_targets(self, message: Message) -> list[str]:
+        if message.type == MessageType.DIRECT:
+            if message.recipient_id and message.recipient_id in self._subscribers:
+                return [message.recipient_id]
+            return []
+        return [
+            agent_id for agent_id in self._subscribers if agent_id != message.sender_id
+        ]
