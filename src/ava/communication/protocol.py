@@ -74,3 +74,7 @@ class MessageBus:
             return_exceptions=True,
         )
         delivered = sum(1 for r in results if r is True)
+        self._delivered += delivered
+        return delivered
+
+    def _resolve_targets(self, message: Message) -> list[str]:
