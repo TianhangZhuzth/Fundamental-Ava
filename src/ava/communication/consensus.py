@@ -68,3 +68,10 @@ class RaftLikeConsensus:
     matching votes out of n = 3f+1, tolerating f Byzantine participants
     rather than only crash failures.
     """
+
+    def __init__(self, participant_ids: list[str], *, vote_timeout: float = 5.0) -> None:
+        self.participant_ids = list(participant_ids)
+        self.vote_timeout = vote_timeout
+        self.f = max_faulty(len(participant_ids))
+        self.quorum = quorum_size(len(participant_ids))
+        self._tallies: dict[str, VoteTally] = defaultdict(VoteTally)
