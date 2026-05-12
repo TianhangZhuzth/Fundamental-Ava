@@ -76,3 +76,8 @@ async def test_consensus_fails_without_quorum() -> None:
     async def one_vote(_proposal: Proposal, _phase: Phase) -> set[str]:
         return {"a"}
 
+    with pytest.raises(ConsensusError):
+        await consensus.propose(
+            Proposal(id="p2", proposer_id="a", payload={}),
+            vote_collector=one_vote,
+        )
