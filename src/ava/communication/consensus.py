@@ -83,3 +83,8 @@ class RaftLikeConsensus:
         *,
         vote_collector: VoteCollector,
     ) -> dict[str, Any]:
+        """Drive one proposal through PREPARE and COMMIT phases.
+
+        `vote_collector` is an async callable
+        `(proposal, phase) -> set[str]` returning the set of participant
+        ids that voted yes for that phase, used to decouple the consensus
