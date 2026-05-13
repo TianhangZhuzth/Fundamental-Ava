@@ -91,3 +91,12 @@ class MessageBus:
         if callback is None:
             return False
         try:
+            await callback(message)
+            return True
+        except Exception:
+            log.exception("bus.delivery_failed", agent_id=agent_id, message_id=message.id)
+            return False
+
+    def stats(self) -> dict[str, int]:
+        return {
+            "subscribers": len(self._subscribers),
