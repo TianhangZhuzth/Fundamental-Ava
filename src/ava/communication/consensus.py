@@ -75,3 +75,11 @@ class RaftLikeConsensus:
         self.f = max_faulty(len(participant_ids))
         self.quorum = quorum_size(len(participant_ids))
         self._tallies: dict[str, VoteTally] = defaultdict(VoteTally)
+        self._decided: dict[str, dict[str, Any]] = {}
+
+    async def propose(
+        self,
+        proposal: Proposal,
+        *,
+        vote_collector: VoteCollector,
+    ) -> dict[str, Any]:
