@@ -85,3 +85,9 @@ class MessageBus:
         return [
             agent_id for agent_id in self._subscribers if agent_id != message.sender_id
         ]
+
+    async def _deliver_one(self, agent_id: str, message: Message) -> bool:
+        callback = self._subscribers.get(agent_id)
+        if callback is None:
+            return False
+        try:
