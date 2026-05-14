@@ -96,3 +96,10 @@ class RaftLikeConsensus:
         prepare_votes = await self._run_phase(proposal, Phase.PREPARE, vote_collector)
         if len(prepare_votes) < self.quorum:
             raise ConsensusError(
+                f"proposal {proposal.id} failed PREPARE: {len(prepare_votes)}/{self.quorum}"
+            )
+
+        commit_votes = await self._run_phase(proposal, Phase.COMMIT, vote_collector)
+        if len(commit_votes) < self.quorum:
+            raise ConsensusError(
+                f"proposal {proposal.id} failed COMMIT: {len(commit_votes)}/{self.quorum}"
