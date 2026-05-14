@@ -103,3 +103,9 @@ class RaftLikeConsensus:
         if len(commit_votes) < self.quorum:
             raise ConsensusError(
                 f"proposal {proposal.id} failed COMMIT: {len(commit_votes)}/{self.quorum}"
+            )
+
+        self._decided[proposal.id] = proposal.payload
+        log.info(
+            "consensus.committed",
+            proposal_id=proposal.id,
