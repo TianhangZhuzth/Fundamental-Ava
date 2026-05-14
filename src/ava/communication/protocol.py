@@ -100,3 +100,6 @@ class MessageBus:
     def stats(self) -> dict[str, int]:
         return {
             "subscribers": len(self._subscribers),
+            "delivered": self._delivered,
+            "dropped": self._dropped,
+        }
