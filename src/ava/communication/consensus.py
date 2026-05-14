@@ -88,3 +88,11 @@ class RaftLikeConsensus:
         `vote_collector` is an async callable
         `(proposal, phase) -> set[str]` returning the set of participant
         ids that voted yes for that phase, used to decouple the consensus
+        state machine from any particular transport.
+        """
+        if len(self.participant_ids) < 3 * self.f + 1:
+            raise ConsensusError("insufficient participants for BFT guarantees")
+
+        prepare_votes = await self._run_phase(proposal, Phase.PREPARE, vote_collector)
+        if len(prepare_votes) < self.quorum:
+            raise ConsensusError(
