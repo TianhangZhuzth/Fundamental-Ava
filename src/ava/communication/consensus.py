@@ -133,3 +133,6 @@ class RaftLikeConsensus:
 
     def is_decided(self, proposal_id: str) -> bool:
         return proposal_id in self._decided
+
+    def result(self, proposal_id: str) -> dict[str, Any] | None:
+        return self._decided.get(proposal_id)
