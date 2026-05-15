@@ -129,3 +129,7 @@ class RaftLikeConsensus:
             tally.prepare_votes |= votes
         else:
             tally.commit_votes |= votes
+        return votes
+
+    def is_decided(self, proposal_id: str) -> bool:
+        return proposal_id in self._decided
