@@ -109,3 +109,12 @@ class RaftLikeConsensus:
         log.info(
             "consensus.committed",
             proposal_id=proposal.id,
+            votes=len(commit_votes),
+            quorum=self.quorum,
+        )
+        return proposal.payload
+
+    async def _run_phase(
+        self, proposal: Proposal, phase: Phase, vote_collector: VoteCollector
+    ) -> set[str]:
+        try:
