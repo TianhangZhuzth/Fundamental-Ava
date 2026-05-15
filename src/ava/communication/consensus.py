@@ -118,3 +118,7 @@ class RaftLikeConsensus:
         self, proposal: Proposal, phase: Phase, vote_collector: VoteCollector
     ) -> set[str]:
         try:
+            votes = await asyncio.wait_for(
+                vote_collector(proposal, phase), timeout=self.vote_timeout
+            )
+        except TimeoutError as exc:
