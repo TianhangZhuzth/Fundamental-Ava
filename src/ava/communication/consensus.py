@@ -122,3 +122,10 @@ class RaftLikeConsensus:
                 vote_collector(proposal, phase), timeout=self.vote_timeout
             )
         except TimeoutError as exc:
+            raise ConsensusError(f"phase {phase.value} timed out for {proposal.id}") from exc
+
+        tally = self._tallies[proposal.id]
+        if phase == Phase.PREPARE:
+            tally.prepare_votes |= votes
+        else:
+            tally.commit_votes |= votes
