@@ -6,3 +6,12 @@ Each tick it: (1) snapshots shared world state, (2) hands every live agent
 to the ExecutionEngine for parallel stepping, (3) feeds the resulting
 actions into CulturalTransmission and GovernanceSystem so norms and laws
 can emerge from aggregate behavior, and (4) records a trace frame.
+"""
+
+from __future__ import annotations
+
+import time
+from dataclasses import dataclass, field
+from typing import Any
+
+import structlog
