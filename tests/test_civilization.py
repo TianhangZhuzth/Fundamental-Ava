@@ -13,3 +13,8 @@ from tests.conftest import EchoAgent
 async def test_civilization_steps_all_agents() -> None:
     bus = MessageBus()
     civ = Civilization(SimulationConfig(max_ticks=5), bus=bus)
+    for i in range(10):
+        civ.add_agent(EchoAgent(name=f"agent-{i}", bus=bus))
+
+    report = await civ.step()
+    assert report.population == 10
