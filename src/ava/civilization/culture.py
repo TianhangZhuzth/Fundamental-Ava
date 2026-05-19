@@ -16,3 +16,7 @@ import structlog
 
 from ava.agents.base import Action
 
+log = structlog.get_logger(__name__)
+
+
+@dataclass(slots=True)
