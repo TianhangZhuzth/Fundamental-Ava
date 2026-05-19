@@ -18,3 +18,9 @@ async def test_civilization_steps_all_agents() -> None:
 
     report = await civ.step()
     assert report.population == 10
+    assert report.actions_taken == 10
+    assert civ.tick == 1
+
+
+@pytest.mark.asyncio
+async def test_civilization_run_produces_history() -> None:
