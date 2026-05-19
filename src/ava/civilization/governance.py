@@ -16,3 +16,11 @@ from enum import Enum
 import structlog
 
 log = structlog.get_logger(__name__)
+
+
+class ProposalStatus(Enum):
+    PENDING = "pending"
+    RATIFIED = "ratified"
+    REJECTED = "rejected"
+    REPEALED = "repealed"
+
