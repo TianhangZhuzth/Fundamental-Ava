@@ -20,3 +20,8 @@ log = structlog.get_logger(__name__)
 
 
 @dataclass(slots=True)
+class Norm:
+    behavior: str
+    adoption_count: int
+    first_observed_tick: int
+    strength: float = 0.0
