@@ -24,3 +24,12 @@ async def test_civilization_steps_all_agents() -> None:
 
 @pytest.mark.asyncio
 async def test_civilization_run_produces_history() -> None:
+    bus = MessageBus()
+    civ = Civilization(SimulationConfig(max_ticks=3), bus=bus)
+    civ.add_agent(EchoAgent(name="solo", bus=bus))
+
+    reports = await civ.run()
+    assert len(reports) == 3
+    assert civ.history()[-1].tick == 3
+
+
