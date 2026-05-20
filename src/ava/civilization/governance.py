@@ -24,3 +24,10 @@ class ProposalStatus(Enum):
     REJECTED = "rejected"
     REPEALED = "repealed"
 
+
+@dataclass(slots=True)
+class Law:
+    id: str
+    text: str
+    proposer_id: str
+    enacted_tick: int
