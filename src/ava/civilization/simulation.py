@@ -26,3 +26,11 @@ from ava.execution.tracer import SimulationTracer
 log = structlog.get_logger(__name__)
 
 
+@dataclass(slots=True)
+class SimulationConfig:
+    max_ticks: int = 1_000
+    max_concurrent_agents: int = 256
+    tick_budget_seconds: float = 2.0
+    enable_culture: bool = True
+    enable_governance: bool = True
+    seed: int | None = None
