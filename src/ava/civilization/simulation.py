@@ -34,3 +34,12 @@ class SimulationConfig:
     enable_culture: bool = True
     enable_governance: bool = True
     seed: int | None = None
+
+
+@dataclass(slots=True)
+class TickReport:
+    tick: int
+    duration_seconds: float
+    actions_taken: int
+    population: int
+    new_norms: int = 0
