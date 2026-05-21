@@ -25,3 +25,9 @@ class Norm:
     adoption_count: int
     first_observed_tick: int
     strength: float = 0.0
+    established: bool = False
+
+
+class CulturalTransmission:
+    """Tracks behavior frequency across the population and promotes
+    sufficiently common patterns into durable, queryable norms."""
