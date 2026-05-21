@@ -31,3 +31,11 @@ class Law:
     text: str
     proposer_id: str
     enacted_tick: int
+    votes_for: int
+    votes_against: int
+    status: ProposalStatus = ProposalStatus.PENDING
+    violations: int = 0
+
+
+@dataclass(slots=True)
+class Proposal:
