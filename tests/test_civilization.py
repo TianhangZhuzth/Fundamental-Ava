@@ -33,3 +33,11 @@ async def test_civilization_run_produces_history() -> None:
     assert civ.history()[-1].tick == 3
 
 
+def test_culture_establishes_norm_above_threshold() -> None:
+    from ava.agents.base import Action
+
+    culture = CulturalTransmission(adoption_threshold=0.3, window=10)
+    actions = [Action(kind="share_food", payload={}) for _ in range(8)] + [
+        Action(kind="hoard_food", payload={}) for _ in range(2)
+    ]
+    new_norms = culture.observe_actions(actions, tick=1)
