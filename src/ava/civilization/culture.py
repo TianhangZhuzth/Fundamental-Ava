@@ -31,3 +31,10 @@ class Norm:
 class CulturalTransmission:
     """Tracks behavior frequency across the population and promotes
     sufficiently common patterns into durable, queryable norms."""
+
+    def __init__(self, *, adoption_threshold: float = 0.35, window: int = 50) -> None:
+        self.adoption_threshold = adoption_threshold
+        self.window = window
+        self._recent_actions: list[tuple[int, str]] = []
+        self._norms: dict[str, Norm] = {}
+
