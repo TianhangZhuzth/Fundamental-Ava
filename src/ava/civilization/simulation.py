@@ -43,3 +43,9 @@ class TickReport:
     actions_taken: int
     population: int
     new_norms: int = 0
+    new_laws: int = 0
+    extra: dict[str, Any] = field(default_factory=dict)
+
+
+class Civilization:
+    """A population of agents evolving under shared rules over time."""
