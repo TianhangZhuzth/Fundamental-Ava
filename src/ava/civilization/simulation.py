@@ -49,3 +49,8 @@ class TickReport:
 
 class Civilization:
     """A population of agents evolving under shared rules over time."""
+
+    def __init__(
+        self,
+        config: SimulationConfig | None = None,
+        *,
