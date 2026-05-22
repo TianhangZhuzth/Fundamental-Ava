@@ -41,3 +41,12 @@ def test_culture_establishes_norm_above_threshold() -> None:
         Action(kind="hoard_food", payload={}) for _ in range(2)
     ]
     new_norms = culture.observe_actions(actions, tick=1)
+    assert new_norms == 2
+    norm = culture.query("share_food")
+    assert norm is not None
+    assert norm.established
+
+
+def test_governance_ratifies_with_majority_and_quorum() -> None:
+    gov = GovernanceSystem(ratification_margin=0.5, min_quorum=3)
+    proposal = gov.propose(text="share water equally", proposer_id="a", tick=1)
