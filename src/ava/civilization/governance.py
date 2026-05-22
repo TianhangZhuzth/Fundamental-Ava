@@ -39,3 +39,12 @@ class Law:
 
 @dataclass(slots=True)
 class Proposal:
+    id: str
+    text: str
+    proposer_id: str
+    created_tick: int
+    votes_for: set[str] = field(default_factory=set)
+    votes_against: set[str] = field(default_factory=set)
+
+
+class GovernanceSystem:
