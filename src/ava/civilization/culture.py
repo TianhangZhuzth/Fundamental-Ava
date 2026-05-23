@@ -38,3 +38,9 @@ class CulturalTransmission:
         self._recent_actions: list[tuple[int, str]] = []
         self._norms: dict[str, Norm] = {}
 
+    def observe_actions(self, actions: list[Action], *, tick: int) -> int:
+        for action in actions:
+            self._recent_actions.append((tick, action.kind))
+
+        cutoff = tick - self.window
+        self._recent_actions = [(t, k) for t, k in self._recent_actions if t >= cutoff]
