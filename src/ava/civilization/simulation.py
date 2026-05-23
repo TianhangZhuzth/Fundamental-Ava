@@ -54,3 +54,11 @@ class Civilization:
         self,
         config: SimulationConfig | None = None,
         *,
+        bus: MessageBus | None = None,
+    ) -> None:
+        self.config = config or SimulationConfig()
+        self.bus = bus or MessageBus()
+        self.agents: dict[str, AgentCore] = {}
+        self.tick: int = 0
+        self.world_state: dict[str, Any] = {}
+
