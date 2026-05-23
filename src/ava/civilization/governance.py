@@ -48,3 +48,9 @@ class Proposal:
 
 
 class GovernanceSystem:
+    """Manages the proposal -> vote -> ratify -> enforce lifecycle for laws.
+
+    Ratification threshold is a simple majority of votes cast by default,
+    but quorum requirements scale with population so a handful of early
+    adopters cannot legislate for an entire civilization.
+    """
