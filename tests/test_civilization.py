@@ -50,3 +50,7 @@ def test_culture_establishes_norm_above_threshold() -> None:
 def test_governance_ratifies_with_majority_and_quorum() -> None:
     gov = GovernanceSystem(ratification_margin=0.5, min_quorum=3)
     proposal = gov.propose(text="share water equally", proposer_id="a", tick=1)
+    for voter in ("a", "b", "c"):
+        gov.cast_vote(proposal.id, voter, support=True)
+    gov.cast_vote(proposal.id, "d", support=False)
+
