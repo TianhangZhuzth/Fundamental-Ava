@@ -62,3 +62,10 @@ class Civilization:
         self.tick: int = 0
         self.world_state: dict[str, Any] = {}
 
+        self.engine = ExecutionEngine(max_concurrency=self.config.max_concurrent_agents)
+        self.tracer = SimulationTracer()
+        self.culture = CulturalTransmission() if self.config.enable_culture else None
+        self.governance = GovernanceSystem() if self.config.enable_governance else None
+
+        self._tick_reports: list[TickReport] = []
+
