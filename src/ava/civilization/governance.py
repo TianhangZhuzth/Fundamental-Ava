@@ -54,3 +54,12 @@ class GovernanceSystem:
     but quorum requirements scale with population so a handful of early
     adopters cannot legislate for an entire civilization.
     """
+
+    def __init__(self, *, ratification_margin: float = 0.5, min_quorum: int = 3) -> None:
+        self.ratification_margin = ratification_margin
+        self.min_quorum = min_quorum
+        self._proposals: dict[str, Proposal] = {}
+        self._laws: dict[str, Law] = {}
+
+    def propose(self, *, text: str, proposer_id: str, tick: int) -> Proposal:
+        proposal = Proposal(
