@@ -44,3 +44,10 @@ class CulturalTransmission:
 
         cutoff = tick - self.window
         self._recent_actions = [(t, k) for t, k in self._recent_actions if t >= cutoff]
+
+        if not self._recent_actions:
+            return 0
+
+        counts = Counter(kind for _, kind in self._recent_actions)
+        total = sum(counts.values())
+        newly_established = 0
