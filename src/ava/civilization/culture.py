@@ -55,3 +55,12 @@ class CulturalTransmission:
         for behavior, count in counts.items():
             share = count / total
             norm = self._norms.get(behavior)
+            if norm is None:
+                norm = Norm(behavior=behavior, adoption_count=count, first_observed_tick=tick)
+                self._norms[behavior] = norm
+            else:
+                norm.adoption_count = count
+            norm.strength = share
+
+            if not norm.established and share >= self.adoption_threshold:
+                norm.established = True
