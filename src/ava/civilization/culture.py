@@ -51,3 +51,7 @@ class CulturalTransmission:
         counts = Counter(kind for _, kind in self._recent_actions)
         total = sum(counts.values())
         newly_established = 0
+
+        for behavior, count in counts.items():
+            share = count / total
+            norm = self._norms.get(behavior)
