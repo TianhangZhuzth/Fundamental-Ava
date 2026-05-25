@@ -63,3 +63,7 @@ class GovernanceSystem:
 
     def propose(self, *, text: str, proposer_id: str, tick: int) -> Proposal:
         proposal = Proposal(
+            id=str(uuid.uuid4()), text=text, proposer_id=proposer_id, created_tick=tick
+        )
+        self._proposals[proposal.id] = proposal
+        log.info("governance.proposed", proposal_id=proposal.id, proposer=proposer_id)
