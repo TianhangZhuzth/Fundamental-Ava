@@ -63,3 +63,7 @@ def test_governance_rejects_without_majority() -> None:
     gov = GovernanceSystem(ratification_margin=0.6, min_quorum=2)
     proposal = gov.propose(text="ban trading", proposer_id="a", tick=1)
     gov.cast_vote(proposal.id, "a", support=True)
+    gov.cast_vote(proposal.id, "b", support=False)
+
+    ratified = gov.evaluate_proposals(tick=2)
+    assert ratified == 0
