@@ -69,3 +69,9 @@ class Civilization:
 
         self._tick_reports: list[TickReport] = []
 
+    def add_agent(self, agent: AgentCore) -> None:
+        self.agents[agent.id] = agent
+
+    def remove_agent(self, agent_id: str) -> None:
+        agent = self.agents.pop(agent_id, None)
+        if agent is not None:
