@@ -75,3 +75,12 @@ class Civilization:
     def remove_agent(self, agent_id: str) -> None:
         agent = self.agents.pop(agent_id, None)
         if agent is not None:
+            agent.terminate()
+
+    async def run(self, *, ticks: int | None = None) -> list[TickReport]:
+        target = ticks if ticks is not None else self.config.max_ticks
+        reports = []
+        for _ in range(target):
+            report = await self.step()
+            reports.append(report)
+            if not self.agents:
