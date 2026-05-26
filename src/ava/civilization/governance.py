@@ -67,3 +67,12 @@ class GovernanceSystem:
         )
         self._proposals[proposal.id] = proposal
         log.info("governance.proposed", proposal_id=proposal.id, proposer=proposer_id)
+        return proposal
+
+    def cast_vote(self, proposal_id: str, voter_id: str, *, support: bool) -> None:
+        proposal = self._proposals.get(proposal_id)
+        if proposal is None:
+            return
+        proposal.votes_for.discard(voter_id)
+        proposal.votes_against.discard(voter_id)
+        (proposal.votes_for if support else proposal.votes_against).add(voter_id)
