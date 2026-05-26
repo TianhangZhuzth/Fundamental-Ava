@@ -67,3 +67,4 @@ def test_governance_rejects_without_majority() -> None:
 
     ratified = gov.evaluate_proposals(tick=2)
     assert ratified == 0
+    assert len(gov.active_laws()) == 0
