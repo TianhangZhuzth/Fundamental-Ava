@@ -64,3 +64,11 @@ class CulturalTransmission:
 
             if not norm.established and share >= self.adoption_threshold:
                 norm.established = True
+                newly_established += 1
+                log.info("culture.norm_established", behavior=behavior, strength=share, tick=tick)
+
+        return newly_established
+
+    def established_norms(self) -> list[Norm]:
+        return [n for n in self._norms.values() if n.established]
+
