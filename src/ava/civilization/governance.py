@@ -82,3 +82,10 @@ class GovernanceSystem:
 
         Returns the number of laws newly ratified this tick.
         """
+        ratified = 0
+        for proposal in list(self._proposals.values()):
+            total_votes = len(proposal.votes_for) + len(proposal.votes_against)
+            if total_votes < self.min_quorum:
+                continue
+
+            support_share = len(proposal.votes_for) / total_votes
