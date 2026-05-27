@@ -76,3 +76,9 @@ class GovernanceSystem:
         proposal.votes_for.discard(voter_id)
         proposal.votes_against.discard(voter_id)
         (proposal.votes_for if support else proposal.votes_against).add(voter_id)
+
+    def evaluate_proposals(self, *, tick: int) -> int:
+        """Ratify or reject any pending proposal that has met quorum.
+
+        Returns the number of laws newly ratified this tick.
+        """
