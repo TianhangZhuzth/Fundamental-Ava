@@ -72,3 +72,10 @@ class CulturalTransmission:
     def established_norms(self) -> list[Norm]:
         return [n for n in self._norms.values() if n.established]
 
+    def query(self, behavior: str) -> Norm | None:
+        return self._norms.get(behavior)
+
+    def social_proof_bonus(self, behavior: str) -> float:
+        """Utility bonus an agent should apply when an action matches an
+        established norm — used by CognitiveArchitecture goal functions."""
+        norm = self._norms.get(behavior)
