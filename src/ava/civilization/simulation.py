@@ -84,3 +84,7 @@ class Civilization:
             report = await self.step()
             reports.append(report)
             if not self.agents:
+                log.info("civilization.population_collapsed", tick=self.tick)
+                break
+        return reports
+
