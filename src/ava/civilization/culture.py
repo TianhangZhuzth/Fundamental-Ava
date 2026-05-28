@@ -79,3 +79,6 @@ class CulturalTransmission:
         """Utility bonus an agent should apply when an action matches an
         established norm — used by CognitiveArchitecture goal functions."""
         norm = self._norms.get(behavior)
+        if norm is None or not norm.established:
+            return 0.0
+        return min(1.0, norm.strength)
