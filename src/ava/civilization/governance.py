@@ -89,3 +89,11 @@ class GovernanceSystem:
                 continue
 
             support_share = len(proposal.votes_for) / total_votes
+            if support_share >= self.ratification_margin:
+                law = Law(
+                    id=proposal.id,
+                    text=proposal.text,
+                    proposer_id=proposal.proposer_id,
+                    enacted_tick=tick,
+                    votes_for=len(proposal.votes_for),
+                    votes_against=len(proposal.votes_against),
