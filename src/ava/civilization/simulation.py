@@ -88,3 +88,12 @@ class Civilization:
                 break
         return reports
 
+    async def step(self) -> TickReport:
+        start = time.perf_counter()
+        self.tick += 1
+        self.world_state["tick"] = self.tick
+
+        results = await self.engine.run_tick(list(self.agents.values()), self.world_state)
+        actions = [action for action in results.values() if action is not None]
+
+        new_norms = 0
