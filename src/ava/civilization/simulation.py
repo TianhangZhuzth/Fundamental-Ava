@@ -97,3 +97,9 @@ class Civilization:
         actions = [action for action in results.values() if action is not None]
 
         new_norms = 0
+        if self.culture is not None:
+            new_norms = self.culture.observe_actions(actions, tick=self.tick)
+
+        new_laws = 0
+        if self.governance is not None:
+            new_laws = self.governance.evaluate_proposals(tick=self.tick)
