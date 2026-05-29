@@ -97,3 +97,12 @@ class GovernanceSystem:
                     enacted_tick=tick,
                     votes_for=len(proposal.votes_for),
                     votes_against=len(proposal.votes_against),
+                    status=ProposalStatus.RATIFIED,
+                )
+                self._laws[law.id] = law
+                ratified += 1
+                log.info("governance.ratified", law_id=law.id, tick=tick, support=support_share)
+            else:
+                log.info("governance.rejected", proposal_id=proposal.id, support=support_share)
+
+            del self._proposals[proposal.id]
