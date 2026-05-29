@@ -106,3 +106,7 @@ class GovernanceSystem:
                 log.info("governance.rejected", proposal_id=proposal.id, support=support_share)
 
             del self._proposals[proposal.id]
+
+        return ratified
+
+    def active_laws(self) -> list[Law]:
