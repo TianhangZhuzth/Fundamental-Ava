@@ -103,3 +103,10 @@ class Civilization:
         new_laws = 0
         if self.governance is not None:
             new_laws = self.governance.evaluate_proposals(tick=self.tick)
+
+        duration = time.perf_counter() - start
+        report = TickReport(
+            tick=self.tick,
+            duration_seconds=duration,
+            actions_taken=len(actions),
+            population=len(self.agents),
