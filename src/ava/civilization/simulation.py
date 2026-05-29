@@ -110,3 +110,9 @@ class Civilization:
             duration_seconds=duration,
             actions_taken=len(actions),
             population=len(self.agents),
+            new_norms=new_norms,
+            new_laws=new_laws,
+        )
+        self.tracer.record_tick(report.__dict__)
+        self._tick_reports.append(report)
+
