@@ -110,3 +110,12 @@ class GovernanceSystem:
         return ratified
 
     def active_laws(self) -> list[Law]:
+        return [law for law in self._laws.values() if law.status == ProposalStatus.RATIFIED]
+
+    def record_violation(self, law_id: str) -> None:
+        law = self._laws.get(law_id)
+        if law is not None:
+            law.violations += 1
+
+    def repeal(self, law_id: str) -> bool:
+        law = self._laws.get(law_id)
