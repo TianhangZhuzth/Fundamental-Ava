@@ -121,3 +121,7 @@ class Civilization:
                 "civilization.tick_over_budget",
                 tick=self.tick,
                 duration=duration,
+                budget=self.config.tick_budget_seconds,
+            )
+        return report
+
