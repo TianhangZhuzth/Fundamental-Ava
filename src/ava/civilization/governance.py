@@ -119,3 +119,7 @@ class GovernanceSystem:
 
     def repeal(self, law_id: str) -> bool:
         law = self._laws.get(law_id)
+        if law is None or law.status != ProposalStatus.RATIFIED:
+            return False
+        law.status = ProposalStatus.REPEALED
+        return True
