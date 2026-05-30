@@ -125,3 +125,8 @@ class Civilization:
             )
         return report
 
+    def history(self) -> list[TickReport]:
+        return list(self._tick_reports)
+
+    def population_snapshot(self) -> list[dict[str, Any]]:
+        return [agent.snapshot().__dict__ for agent in self.agents.values()]
