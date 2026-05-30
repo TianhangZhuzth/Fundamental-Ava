@@ -116,3 +116,8 @@ class Civilization:
         self.tracer.record_tick(report.__dict__)
         self._tick_reports.append(report)
 
+        if duration > self.config.tick_budget_seconds:
+            log.warning(
+                "civilization.tick_over_budget",
+                tick=self.tick,
+                duration=duration,
