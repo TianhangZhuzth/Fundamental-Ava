@@ -2,3 +2,8 @@
 
 Stepping a population of agents is embarrassingly parallel — each agent's
 `step()` only touches its own state plus a read-only world_state snapshot
+and the shared MessageBus, which is itself coroutine-safe. ExecutionEngine
+exploits this with a bounded `asyncio.Semaphore` so a tick over thousands
+of agents doesn't fan out into thousands of concurrent coroutines at once,
+and `asyncio.TaskGroup` so a single agent's unhandled exception doesn't
+silently swallow the rest of the tick.
