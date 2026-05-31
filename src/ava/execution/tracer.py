@@ -5,3 +5,7 @@ and replay deterministically, so SimulationTracer implements the same
 mental model — nested spans with attributes and timing — backed by an
 in-memory buffer that can be flushed to JSONL for offline analysis.
 """
+
+from __future__ import annotations
+
+import json
