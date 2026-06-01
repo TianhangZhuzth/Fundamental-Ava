@@ -7,3 +7,11 @@ exploits this with a bounded `asyncio.Semaphore` so a tick over thousands
 of agents doesn't fan out into thousands of concurrent coroutines at once,
 and `asyncio.TaskGroup` so a single agent's unhandled exception doesn't
 silently swallow the rest of the tick.
+"""
+
+from __future__ import annotations
+
+import asyncio
+import time
+from dataclasses import dataclass
+from typing import TYPE_CHECKING, Any
