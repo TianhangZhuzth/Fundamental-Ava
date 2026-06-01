@@ -15,3 +15,12 @@ import asyncio
 import time
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
+
+import structlog
+
+if TYPE_CHECKING:
+    from ava.agents.base import Action, AgentCore
+
+log = structlog.get_logger(__name__)
+
+
