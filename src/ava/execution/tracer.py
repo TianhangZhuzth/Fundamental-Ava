@@ -18,3 +18,7 @@ from pathlib import Path
 from typing import Any
 
 
+@dataclass(slots=True)
+class TraceSpan:
+    name: str
+    span_id: str
