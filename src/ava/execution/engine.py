@@ -24,3 +24,7 @@ if TYPE_CHECKING:
 log = structlog.get_logger(__name__)
 
 
+@dataclass(slots=True)
+class TickTimings:
+    wall_seconds: float
+    agents_run: int
