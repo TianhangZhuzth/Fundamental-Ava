@@ -22,3 +22,8 @@ from typing import Any
 class TraceSpan:
     name: str
     span_id: str
+    parent_id: str | None
+    start_time: float
+    end_time: float | None = None
+    attributes: dict[str, Any] = field(default_factory=dict)
+
