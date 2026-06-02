@@ -27,3 +27,7 @@ class TraceSpan:
     end_time: float | None = None
     attributes: dict[str, Any] = field(default_factory=dict)
 
+    @property
+    def duration_seconds(self) -> float | None:
+        if self.end_time is None:
+            return None
