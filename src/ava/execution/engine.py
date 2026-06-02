@@ -28,3 +28,8 @@ log = structlog.get_logger(__name__)
 class TickTimings:
     wall_seconds: float
     agents_run: int
+    agents_failed: int
+    slowest_agent_id: str | None
+    slowest_seconds: float
+
+
