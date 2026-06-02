@@ -33,3 +33,7 @@ class TickTimings:
     slowest_seconds: float
 
 
+class ExecutionEngine:
+    """Bounded-concurrency scheduler for one simulation tick."""
+
+    def __init__(self, *, max_concurrency: int = 256, per_agent_timeout: float = 1.0) -> None:
