@@ -31,3 +31,12 @@ class TraceSpan:
     def duration_seconds(self) -> float | None:
         if self.end_time is None:
             return None
+        return self.end_time - self.start_time
+
+
+class SimulationTracer:
+    """Collects tick reports and nested spans for offline inspection."""
+
+    def __init__(self) -> None:
+        self._ticks: list[dict[str, Any]] = []
+        self._spans: list[TraceSpan] = []
