@@ -37,3 +37,10 @@ class ExecutionEngine:
     """Bounded-concurrency scheduler for one simulation tick."""
 
     def __init__(self, *, max_concurrency: int = 256, per_agent_timeout: float = 1.0) -> None:
+        self.max_concurrency = max_concurrency
+        self.per_agent_timeout = per_agent_timeout
+        self._semaphore = asyncio.Semaphore(max_concurrency)
+        self.last_timings: TickTimings | None = None
+
+    async def run_tick(
+        self, agents: list[AgentCore], world_state: dict[str, Any]
