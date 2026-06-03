@@ -40,3 +40,7 @@ class SimulationTracer:
     def __init__(self) -> None:
         self._ticks: list[dict[str, Any]] = []
         self._spans: list[TraceSpan] = []
+        self._active_stack: list[str] = []
+
+    def record_tick(self, report: dict[str, Any]) -> None:
+        self._ticks.append(report)
