@@ -44,3 +44,7 @@ class ExecutionEngine:
 
     async def run_tick(
         self, agents: list[AgentCore], world_state: dict[str, Any]
+    ) -> dict[str, Action | None]:
+        results: dict[str, Action | None] = {}
+        timings: dict[str, float] = {}
+        failed = 0
