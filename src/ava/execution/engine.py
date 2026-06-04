@@ -48,3 +48,12 @@ class ExecutionEngine:
         results: dict[str, Action | None] = {}
         timings: dict[str, float] = {}
         failed = 0
+        start = time.perf_counter()
+
+        async def run_one(agent: AgentCore) -> None:
+            nonlocal failed
+            async with self._semaphore:
+                agent_start = time.perf_counter()
+                try:
+                    action = await asyncio.wait_for(
+                        agent.step(world_state), timeout=self.per_agent_timeout
