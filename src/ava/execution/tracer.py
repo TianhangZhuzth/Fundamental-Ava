@@ -51,3 +51,9 @@ class SimulationTracer:
         span = TraceSpan(
             name=name,
             span_id=str(uuid.uuid4()),
+            parent_id=parent_id,
+            start_time=time.perf_counter(),
+            attributes=dict(attributes),
+        )
+        self._active_stack.append(span.span_id)
+        try:
