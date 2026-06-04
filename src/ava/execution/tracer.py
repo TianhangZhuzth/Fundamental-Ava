@@ -44,3 +44,10 @@ class SimulationTracer:
 
     def record_tick(self, report: dict[str, Any]) -> None:
         self._ticks.append(report)
+
+    @contextmanager
+    def span(self, name: str, **attributes: Any) -> Iterator[TraceSpan]:
+        parent_id = self._active_stack[-1] if self._active_stack else None
+        span = TraceSpan(
+            name=name,
+            span_id=str(uuid.uuid4()),
