@@ -57,3 +57,9 @@ class ExecutionEngine:
                 try:
                     action = await asyncio.wait_for(
                         agent.step(world_state), timeout=self.per_agent_timeout
+                    )
+                    results[agent.id] = action
+                except TimeoutError:
+                    log.warning("engine.agent_timeout", agent_id=agent.id)
+                    results[agent.id] = None
+                    failed += 1
