@@ -70,3 +70,9 @@ class ExecutionEngine:
                 finally:
                     timings[agent.id] = time.perf_counter() - agent_start
 
+        async with asyncio.TaskGroup() as tg:
+            for agent in agents:
+                tg.create_task(run_one(agent))
+
+        wall = time.perf_counter() - start
+        slowest_id, slowest_seconds = (None, 0.0)
