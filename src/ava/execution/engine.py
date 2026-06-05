@@ -63,3 +63,10 @@ class ExecutionEngine:
                     log.warning("engine.agent_timeout", agent_id=agent.id)
                     results[agent.id] = None
                     failed += 1
+                except Exception:
+                    log.exception("engine.agent_step_failed", agent_id=agent.id)
+                    results[agent.id] = None
+                    failed += 1
+                finally:
+                    timings[agent.id] = time.perf_counter() - agent_start
+
