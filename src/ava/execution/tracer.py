@@ -57,3 +57,12 @@ class SimulationTracer:
         )
         self._active_stack.append(span.span_id)
         try:
+            yield span
+        finally:
+            span.end_time = time.perf_counter()
+            self._active_stack.pop()
+            self._spans.append(span)
+
+    def export_jsonl(self, path: str | Path) -> None:
+        path = Path(path)
+        with path.open("w", encoding="utf-8") as fh:
