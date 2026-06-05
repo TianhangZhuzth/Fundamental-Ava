@@ -66,3 +66,9 @@ class SimulationTracer:
     def export_jsonl(self, path: str | Path) -> None:
         path = Path(path)
         with path.open("w", encoding="utf-8") as fh:
+            for tick in self._ticks:
+                fh.write(json.dumps({"record": "tick", **tick}) + "\n")
+            for span in self._spans:
+                fh.write(
+                    json.dumps(
+                        {
