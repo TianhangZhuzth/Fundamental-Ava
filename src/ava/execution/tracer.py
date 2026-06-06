@@ -72,3 +72,8 @@ class SimulationTracer:
                 fh.write(
                     json.dumps(
                         {
+                            "record": "span",
+                            "name": span.name,
+                            "span_id": span.span_id,
+                            "parent_id": span.parent_id,
+                            "duration_seconds": span.duration_seconds,
