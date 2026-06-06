@@ -83,3 +83,7 @@ class ExecutionEngine:
             wall_seconds=wall,
             agents_run=len(agents),
             agents_failed=failed,
+            slowest_agent_id=slowest_id,
+            slowest_seconds=slowest_seconds,
+        )
+        return results
