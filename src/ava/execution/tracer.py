@@ -77,3 +77,9 @@ class SimulationTracer:
                             "span_id": span.span_id,
                             "parent_id": span.parent_id,
                             "duration_seconds": span.duration_seconds,
+                            "attributes": span.attributes,
+                        }
+                    )
+                    + "\n"
+                )
+
