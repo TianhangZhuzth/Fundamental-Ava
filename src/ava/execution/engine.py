@@ -76,3 +76,10 @@ class ExecutionEngine:
 
         wall = time.perf_counter() - start
         slowest_id, slowest_seconds = (None, 0.0)
+        if timings:
+            slowest_id, slowest_seconds = max(timings.items(), key=lambda kv: kv[1])
+
+        self.last_timings = TickTimings(
+            wall_seconds=wall,
+            agents_run=len(agents),
+            agents_failed=failed,
