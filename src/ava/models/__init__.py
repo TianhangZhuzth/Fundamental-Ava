@@ -11,3 +11,7 @@ __all__ = [
     "CachingBackend",
     "LLMBackend",
     "LLMRequest",
+    "LLMResponse",
+    "MockBackend",
+    "RateLimitedBackend",
+]
