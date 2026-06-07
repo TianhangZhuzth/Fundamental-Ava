@@ -83,3 +83,8 @@ class SimulationTracer:
                     + "\n"
                 )
 
+    def tick_history(self) -> list[dict[str, Any]]:
+        return list(self._ticks)
+
+    def spans(self) -> list[TraceSpan]:
+        return list(self._spans)
