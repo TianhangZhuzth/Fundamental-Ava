@@ -22,3 +22,10 @@ from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_ex
 
 log = structlog.get_logger(__name__)
 
+
+class LLMTransientError(RuntimeError):
+    """Retryable failure: rate limit, timeout, 5xx."""
+
+
+@dataclass(slots=True)
+class LLMRequest:
