@@ -29,3 +29,11 @@ class LLMTransientError(RuntimeError):
 
 @dataclass(slots=True)
 class LLMRequest:
+    prompt: str
+    system: str | None = None
+    max_tokens: int = 512
+    temperature: float = 0.7
+    metadata: dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass(slots=True)
