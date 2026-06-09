@@ -57,3 +57,9 @@ class MockBackend(LLMBackend):
     """Deterministic, network-free backend for tests and offline runs.
 
     Produces a stable pseudo-response derived from a hash of the prompt so
+    repeated runs with the same inputs are reproducible — important for
+    regression tests against emergent-behavior benchmarks.
+    """
+
+    def __init__(self, *, latency_seconds: float = 0.01) -> None:
+        self.latency_seconds = latency_seconds
