@@ -50,3 +50,10 @@ class LLMBackend(abc.ABC):
 
     @abc.abstractmethod
     async def complete(self, request: LLMRequest) -> LLMResponse:
+        raise NotImplementedError
+
+
+class MockBackend(LLMBackend):
+    """Deterministic, network-free backend for tests and offline runs.
+
+    Produces a stable pseudo-response derived from a hash of the prompt so
