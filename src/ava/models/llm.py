@@ -46,3 +46,7 @@ class LLMResponse:
 
 
 class LLMBackend(abc.ABC):
+    """Common interface every model backend implements."""
+
+    @abc.abstractmethod
+    async def complete(self, request: LLMRequest) -> LLMResponse:
