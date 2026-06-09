@@ -37,3 +37,12 @@ class LLMRequest:
 
 
 @dataclass(slots=True)
+class LLMResponse:
+    text: str
+    prompt_tokens: int
+    completion_tokens: int
+    latency_seconds: float
+    cached: bool = False
+
+
+class LLMBackend(abc.ABC):
