@@ -83,3 +83,11 @@ class RateLimitedBackend(LLMBackend):
     `burst_size` are absorbed by the bucket so a sudden spike from many
     agents deliberating in the same tick doesn't immediately 429.
     """
+
+    def __init__(
+        self,
+        backend: LLMBackend,
+        *,
+        requests_per_second: float = 20.0,
+        burst_size: int = 40,
+    ) -> None:
