@@ -72,3 +72,9 @@ class MockBackend(LLMBackend):
             text=text,
             prompt_tokens=len(request.prompt.split()),
             completion_tokens=len(text.split()),
+            latency_seconds=self.latency_seconds,
+        )
+
+
+class RateLimitedBackend(LLMBackend):
+    """Wraps any backend with a token-bucket limiter and retry policy.
