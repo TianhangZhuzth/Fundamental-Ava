@@ -78,3 +78,8 @@ class MockBackend(LLMBackend):
 
 class RateLimitedBackend(LLMBackend):
     """Wraps any backend with a token-bucket limiter and retry policy.
+
+    `requests_per_second` caps sustained throughput; bursts up to
+    `burst_size` are absorbed by the bucket so a sudden spike from many
+    agents deliberating in the same tick doesn't immediately 429.
+    """
