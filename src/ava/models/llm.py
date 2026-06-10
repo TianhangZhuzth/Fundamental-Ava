@@ -63,3 +63,12 @@ class MockBackend(LLMBackend):
 
     def __init__(self, *, latency_seconds: float = 0.01) -> None:
         self.latency_seconds = latency_seconds
+
+    async def complete(self, request: LLMRequest) -> LLMResponse:
+        await asyncio.sleep(self.latency_seconds)
+        digest = hashlib.sha256(request.prompt.encode("utf-8")).hexdigest()[:24]
+        text = f"[mock:{digest}] response to: {request.prompt[:64]}"
+        return LLMResponse(
+            text=text,
+            prompt_tokens=len(request.prompt.split()),
+            completion_tokens=len(text.split()),
