@@ -107,3 +107,9 @@ class RateLimitedBackend(LLMBackend):
 
             if self._tokens < 1.0:
                 wait_time = (1.0 - self._tokens) / self.rate
+                await asyncio.sleep(wait_time)
+                self._tokens = 0.0
+            else:
+                self._tokens -= 1.0
+
+    @retry(
