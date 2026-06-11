@@ -91,3 +91,8 @@ class RateLimitedBackend(LLMBackend):
         requests_per_second: float = 20.0,
         burst_size: int = 40,
     ) -> None:
+        self.backend = backend
+        self.rate = requests_per_second
+        self.capacity = burst_size
+        self._tokens = float(burst_size)
+        self._last_refill = time.monotonic()
