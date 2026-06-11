@@ -102,3 +102,8 @@ class RateLimitedBackend(LLMBackend):
         async with self._lock:
             now = time.monotonic()
             elapsed = now - self._last_refill
+            self._tokens = min(self.capacity, self._tokens + elapsed * self.rate)
+            self._last_refill = now
+
+            if self._tokens < 1.0:
+                wait_time = (1.0 - self._tokens) / self.rate
