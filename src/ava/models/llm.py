@@ -96,3 +96,9 @@ class RateLimitedBackend(LLMBackend):
         self.capacity = burst_size
         self._tokens = float(burst_size)
         self._last_refill = time.monotonic()
+        self._lock = asyncio.Lock()
+
+    async def _acquire(self) -> None:
+        async with self._lock:
+            now = time.monotonic()
+            elapsed = now - self._last_refill
