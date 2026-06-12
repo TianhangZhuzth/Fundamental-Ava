@@ -129,3 +129,11 @@ class CachingBackend(LLMBackend):
     (e.g. "what should I do given this common world state") — caching
     those collapses redundant calls without affecting per-agent state.
     """
+
+    def __init__(self, backend: LLMBackend, *, max_entries: int = 10_000) -> None:
+        self.backend = backend
+        self.max_entries = max_entries
+        self._cache: dict[tuple[str, str | None, float], LLMResponse] = {}
+
+    def _key(self, request: LLMRequest) -> tuple[str, str | None, float]:
+        return (request.prompt, request.system, request.temperature)
