@@ -137,3 +137,8 @@ class CachingBackend(LLMBackend):
 
     def _key(self, request: LLMRequest) -> tuple[str, str | None, float]:
         return (request.prompt, request.system, request.temperature)
+
+    async def complete(self, request: LLMRequest) -> LLMResponse:
+        key = self._key(request)
+        cached = self._cache.get(key)
+        if cached is not None:
