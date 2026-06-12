@@ -113,3 +113,8 @@ class RateLimitedBackend(LLMBackend):
                 self._tokens -= 1.0
 
     @retry(
+        retry=retry_if_exception_type(LLMTransientError),
+        stop=stop_after_attempt(4),
+        wait=wait_exponential(multiplier=0.5, min=0.5, max=8.0),
+    )
+    async def complete(self, request: LLMRequest) -> LLMResponse:
