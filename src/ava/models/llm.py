@@ -118,3 +118,9 @@ class RateLimitedBackend(LLMBackend):
         wait=wait_exponential(multiplier=0.5, min=0.5, max=8.0),
     )
     async def complete(self, request: LLMRequest) -> LLMResponse:
+        await self._acquire()
+        return await self.backend.complete(request)
+
+
+class CachingBackend(LLMBackend):
+    """Memoizes identical (prompt, system, temperature) requests in-process.
