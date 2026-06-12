@@ -124,3 +124,8 @@ class RateLimitedBackend(LLMBackend):
 
 class CachingBackend(LLMBackend):
     """Memoizes identical (prompt, system, temperature) requests in-process.
+
+    Many agents in a shared environment often query near-identical prompts
+    (e.g. "what should I do given this common world state") — caching
+    those collapses redundant calls without affecting per-agent state.
+    """
