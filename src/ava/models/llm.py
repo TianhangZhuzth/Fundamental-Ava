@@ -142,3 +142,11 @@ class CachingBackend(LLMBackend):
         key = self._key(request)
         cached = self._cache.get(key)
         if cached is not None:
+            return LLMResponse(
+                text=cached.text,
+                prompt_tokens=cached.prompt_tokens,
+                completion_tokens=cached.completion_tokens,
+                latency_seconds=0.0,
+                cached=True,
+            )
+
