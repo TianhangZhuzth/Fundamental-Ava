@@ -150,3 +150,8 @@ class CachingBackend(LLMBackend):
                 cached=True,
             )
 
+        response = await self.backend.complete(request)
+        if len(self._cache) >= self.max_entries:
+            self._cache.pop(next(iter(self._cache)))
+        self._cache[key] = response
+        return response
