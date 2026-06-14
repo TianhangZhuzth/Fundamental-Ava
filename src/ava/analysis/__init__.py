@@ -4,3 +4,4 @@ from ava.analysis.emergence import (
     specialization_index,
 )
 
+__all__ = ["EmergenceDetector", "EmergenceEvent", "specialization_index"]
