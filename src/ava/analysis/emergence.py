@@ -15,3 +15,10 @@ from dataclasses import dataclass, field
 from typing import Any
 
 import numpy as np
+from scipy import stats
+
+EMERGENCE_KINDS = (
+    "role_specialization",
+    "wealth_stratification",
+    "alliance_clustering",
+    "behavioral_synchrony",
