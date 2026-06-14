@@ -7,3 +7,11 @@ and relationship data a Civilization produces and flags when a
 distribution shifts enough to call it a genuine emergent pattern rather
 than noise, using change-point detection over a rolling window.
 """
+
+from __future__ import annotations
+
+from collections import Counter, defaultdict
+from dataclasses import dataclass, field
+from typing import Any
+
+import numpy as np
