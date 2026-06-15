@@ -22,3 +22,11 @@ EMERGENCE_KINDS = (
     "wealth_stratification",
     "alliance_clustering",
     "behavioral_synchrony",
+)
+
+
+@dataclass(slots=True)
+class EmergenceEvent:
+    kind: str
+    tick: int
+    magnitude: float
