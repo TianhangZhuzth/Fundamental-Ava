@@ -13,3 +13,11 @@ def test_specialization_index_zero_for_generalists() -> None:
     agents = {
         "a": Counter({"farm": 5, "fight": 5, "trade": 5}),
         "b": Counter({"farm": 5, "fight": 5, "trade": 5}),
+    }
+    index = specialization_index(agents)
+    assert index < 0.05
+
+
+def test_specialization_index_high_for_specialists() -> None:
+    agents = {
+        "a": Counter({"farm": 100}),
