@@ -30,3 +30,12 @@ class EmergenceEvent:
     kind: str
     tick: int
     magnitude: float
+    p_value: float
+    description: str
+    details: dict[str, Any] = field(default_factory=dict)
+
+
+def specialization_index(action_counts_by_agent: dict[str, Counter[str]]) -> float:
+    """Gini-style index over each agent's action-type distribution entropy.
+
+    Returns 0.0 when every agent does the same spread of things
