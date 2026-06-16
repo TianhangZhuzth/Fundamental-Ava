@@ -39,3 +39,9 @@ def specialization_index(action_counts_by_agent: dict[str, Counter[str]]) -> flo
     """Gini-style index over each agent's action-type distribution entropy.
 
     Returns 0.0 when every agent does the same spread of things
+    (generalists) and approaches 1.0 when agents diverge into narrow,
+    distinct roles (specialists) — the population-level signal Project SID
+    uses to identify role emergence such as farmers vs. guards vs. traders.
+    """
+    if not action_counts_by_agent:
+        return 0.0
