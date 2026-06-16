@@ -28,3 +28,9 @@ def test_specialization_index_high_for_specialists() -> None:
     assert index > 0.9
 
 
+def test_gini_zero_for_perfect_equality() -> None:
+    assert gini_coefficient([10.0, 10.0, 10.0, 10.0]) == 0.0
+
+
+def test_gini_high_for_extreme_inequality() -> None:
+    values = [0.0, 0.0, 0.0, 100.0]
