@@ -34,3 +34,12 @@ def test_gini_zero_for_perfect_equality() -> None:
 
 def test_gini_high_for_extreme_inequality() -> None:
     values = [0.0, 0.0, 0.0, 100.0]
+    assert gini_coefficient(values) > 0.6
+
+
+def test_detector_flags_significant_shift() -> None:
+    detector = EmergenceDetector(window=10, significance=0.05)
+    event = None
+    for tick in range(40):
+        value = 1.0 if tick < 20 else 9.0
+        event = detector.observe_metric("cooperation_rate", tick=tick, value=value)
