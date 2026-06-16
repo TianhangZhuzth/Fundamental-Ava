@@ -45,3 +45,10 @@ def specialization_index(action_counts_by_agent: dict[str, Counter[str]]) -> flo
     """
     if not action_counts_by_agent:
         return 0.0
+
+    entropies = []
+    for counts in action_counts_by_agent.values():
+        total = sum(counts.values())
+        if total == 0:
+            continue
+        probs = np.array([c / total for c in counts.values()])
