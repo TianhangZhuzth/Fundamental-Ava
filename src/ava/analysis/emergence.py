@@ -58,3 +58,12 @@ def specialization_index(action_counts_by_agent: dict[str, Counter[str]]) -> flo
 
     return float(np.mean(entropies)) if entropies else 0.0
 
+
+def gini_coefficient(values: list[float]) -> float:
+    """Standard Gini coefficient, used here for wealth/resource stratification."""
+    if not values or all(v == 0 for v in values):
+        return 0.0
+    arr = np.sort(np.array(values, dtype=float))
+    n = len(arr)
+    cumulative = np.cumsum(arr)
+    return float((n + 1 - 2 * np.sum(cumulative) / cumulative[-1]) / n)
