@@ -52,3 +52,9 @@ def specialization_index(action_counts_by_agent: dict[str, Counter[str]]) -> flo
         if total == 0:
             continue
         probs = np.array([c / total for c in counts.values()])
+        entropy = -np.sum(probs * np.log2(probs + 1e-12))
+        max_entropy = np.log2(len(counts)) if len(counts) > 1 else 1.0
+        entropies.append(1.0 - (entropy / max_entropy if max_entropy > 0 else 0.0))
+
+    return float(np.mean(entropies)) if entropies else 0.0
+
