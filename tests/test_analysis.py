@@ -43,3 +43,7 @@ def test_detector_flags_significant_shift() -> None:
     for tick in range(40):
         value = 1.0 if tick < 20 else 9.0
         event = detector.observe_metric("cooperation_rate", tick=tick, value=value)
+    assert event is not None
+    assert event.kind == "cooperation_rate"
+
+
