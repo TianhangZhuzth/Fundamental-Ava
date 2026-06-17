@@ -47,3 +47,10 @@ def test_detector_flags_significant_shift() -> None:
     assert event.kind == "cooperation_rate"
 
 
+def test_detector_silent_on_stable_metric() -> None:
+    detector = EmergenceDetector(window=10, significance=0.05)
+    flagged = False
+    for tick in range(40):
+        result = detector.observe_metric("stable_metric", tick=tick, value=5.0)
+        flagged = flagged or result is not None
+    assert not flagged
