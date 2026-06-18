@@ -90,3 +90,12 @@ class EmergenceDetector:
 
         if np.allclose(recent, recent[0]) and np.allclose(baseline, baseline[0]):
             return None
+
+        _statistic, p_value = stats.mannwhitneyu(recent, baseline, alternative="two-sided")
+        if p_value >= self.significance:
+            return None
+
+        magnitude = float(abs(np.mean(recent) - np.mean(baseline)))
+        event = EmergenceEvent(
+            kind=name,
+            tick=tick,
