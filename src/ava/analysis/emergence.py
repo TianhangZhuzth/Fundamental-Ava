@@ -67,3 +67,11 @@ def gini_coefficient(values: list[float]) -> float:
     n = len(arr)
     cumulative = np.cumsum(arr)
     return float((n + 1 - 2 * np.sum(cumulative) / cumulative[-1]) / n)
+
+
+class EmergenceDetector:
+    """Rolling-window analyzer that flags statistically significant shifts
+    in population-level metrics and emits EmergenceEvent records."""
+
+    def __init__(self, *, window: int = 30, significance: float = 0.05) -> None:
+        self.window = window
