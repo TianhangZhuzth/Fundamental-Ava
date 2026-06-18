@@ -75,3 +75,12 @@ class EmergenceDetector:
 
     def __init__(self, *, window: int = 30, significance: float = 0.05) -> None:
         self.window = window
+        self.significance = significance
+        self._history: dict[str, list[tuple[int, float]]] = defaultdict(list)
+        self.events: list[EmergenceEvent] = []
+
+    def observe_metric(self, name: str, *, tick: int, value: float) -> EmergenceEvent | None:
+        series = self._history[name]
+        series.append((tick, value))
+        if len(series) < 2 * self.window:
+            return None
