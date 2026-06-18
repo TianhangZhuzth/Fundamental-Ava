@@ -84,3 +84,9 @@ class EmergenceDetector:
         series.append((tick, value))
         if len(series) < 2 * self.window:
             return None
+
+        recent = np.array([v for _, v in series[-self.window :]])
+        baseline = np.array([v for _, v in series[-2 * self.window : -self.window]])
+
+        if np.allclose(recent, recent[0]) and np.allclose(baseline, baseline[0]):
+            return None
