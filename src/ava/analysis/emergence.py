@@ -103,3 +103,8 @@ class EmergenceDetector:
             p_value=float(p_value),
             description=(
                 f"{name} shifted from {np.mean(baseline):.3f} to {np.mean(recent):.3f} "
+                f"(p={p_value:.4f})"
+            ),
+            details={
+                "recent_mean": float(np.mean(recent)),
+                "baseline_mean": float(np.mean(baseline)),
