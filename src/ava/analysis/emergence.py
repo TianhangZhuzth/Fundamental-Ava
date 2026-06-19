@@ -99,3 +99,7 @@ class EmergenceDetector:
         event = EmergenceEvent(
             kind=name,
             tick=tick,
+            magnitude=magnitude,
+            p_value=float(p_value),
+            description=(
+                f"{name} shifted from {np.mean(baseline):.3f} to {np.mean(recent):.3f} "
