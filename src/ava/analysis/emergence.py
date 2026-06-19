@@ -108,3 +108,10 @@ class EmergenceDetector:
             details={
                 "recent_mean": float(np.mean(recent)),
                 "baseline_mean": float(np.mean(baseline)),
+            },
+        )
+        self.events.append(event)
+        return event
+
+    def report(self) -> list[EmergenceEvent]:
+        return list(self.events)
