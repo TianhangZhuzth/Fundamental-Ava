@@ -18,3 +18,7 @@ from ava.civilization.simulation import Civilization, SimulationConfig
 from ava.communication.protocol import MessageBus
 
 
+class BenchAgent(AgentCore):
+    async def deliberate(self, percepts: list[Percept], world_state: dict) -> Action | None:
+        return Action(kind="noop", payload={"energy_cost": 0.0})
+
