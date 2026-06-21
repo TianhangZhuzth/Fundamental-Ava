@@ -22,3 +22,8 @@ class BenchAgent(AgentCore):
     async def deliberate(self, percepts: list[Percept], world_state: dict) -> Action | None:
         return Action(kind="noop", payload={"energy_cost": 0.0})
 
+
+async def run_benchmark(n_agents: int, *, ticks: int = 20) -> dict[str, float]:
+    bus = MessageBus()
+    civ = Civilization(SimulationConfig(max_ticks=ticks, max_concurrent_agents=512), bus=bus)
+    for i in range(n_agents):
