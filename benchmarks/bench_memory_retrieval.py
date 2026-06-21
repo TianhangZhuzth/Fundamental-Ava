@@ -22,3 +22,8 @@ def main() -> None:
 
         start = time.perf_counter()
         for _ in range(100):
+            memory.retrieve(query_embedding=None, now_tick=capacity, top_k=10)
+        elapsed = (time.perf_counter() - start) / 100
+
+        print(f"capacity={capacity:>6}  retrieve_latency={elapsed * 1000:8.3f}ms")
+
