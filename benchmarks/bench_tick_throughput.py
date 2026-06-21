@@ -27,3 +27,9 @@ async def run_benchmark(n_agents: int, *, ticks: int = 20) -> dict[str, float]:
     bus = MessageBus()
     civ = Civilization(SimulationConfig(max_ticks=ticks, max_concurrent_agents=512), bus=bus)
     for i in range(n_agents):
+        civ.add_agent(BenchAgent(name=f"agent-{i}", bus=bus))
+
+    durations = []
+    for _ in range(ticks):
+        report = await civ.step()
+        durations.append(report.duration_seconds)
