@@ -33,3 +33,12 @@ async def run_benchmark(n_agents: int, *, ticks: int = 20) -> dict[str, float]:
     for _ in range(ticks):
         report = await civ.step()
         durations.append(report.duration_seconds)
+
+    return {
+        "n_agents": n_agents,
+        "mean_tick_seconds": statistics.mean(durations),
+        "p95_tick_seconds": statistics.quantiles(durations, n=20)[18],
+        "agents_per_second": n_agents / statistics.mean(durations),
+    }
+
+
