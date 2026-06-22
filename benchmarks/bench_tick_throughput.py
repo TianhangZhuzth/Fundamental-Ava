@@ -48,3 +48,10 @@ def main() -> None:
     parser.add_argument("--ticks", type=int, default=20)
     args = parser.parse_args()
 
+    for n in args.agents:
+        result = asyncio.run(run_benchmark(n, ticks=args.ticks))
+        print(
+            f"n_agents={result['n_agents']:>6}  "
+            f"mean_tick={result['mean_tick_seconds']*1000:8.2f}ms  "
+            f"p95_tick={result['p95_tick_seconds']*1000:8.2f}ms  "
+            f"throughput={result['agents_per_second']:10.1f} agents/s"
