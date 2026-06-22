@@ -42,3 +42,9 @@ async def run_benchmark(n_agents: int, *, ticks: int = 20) -> dict[str, float]:
     }
 
 
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--agents", type=int, nargs="+", default=[100, 1000, 5000])
+    parser.add_argument("--ticks", type=int, default=20)
+    args = parser.parse_args()
+
