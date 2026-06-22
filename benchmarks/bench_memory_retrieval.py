@@ -27,3 +27,6 @@ def main() -> None:
 
         print(f"capacity={capacity:>6}  retrieve_latency={elapsed * 1000:8.3f}ms")
 
+
+if __name__ == "__main__":
+    main()
