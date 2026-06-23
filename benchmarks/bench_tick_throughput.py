@@ -55,3 +55,7 @@ def main() -> None:
             f"mean_tick={result['mean_tick_seconds']*1000:8.2f}ms  "
             f"p95_tick={result['p95_tick_seconds']*1000:8.2f}ms  "
             f"throughput={result['agents_per_second']:10.1f} agents/s"
+        )
+
+
+if __name__ == "__main__":
