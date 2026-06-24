@@ -41,3 +41,11 @@ class RoleSeekingAgent(AgentCore):
         choice = random.choices(ROLES, weights=weights, k=1)[0]
 
         success = random.random() < 0.6
+        if success:
+            self.preference[choice] *= 1.08
+        else:
+            self.preference[choice] *= 0.95
+
+        return Action(kind=choice, payload={"energy_cost": 1.0, "success": success})
+
+
