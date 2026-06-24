@@ -32,3 +32,12 @@ class RoleSeekingAgent(AgentCore):
     specialization to emerge without any explicit role assignment."""
 
     def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.preference = {role: 1.0 for role in ROLES}
+
+    async def deliberate(self, percepts: list[Percept], world_state: dict) -> Action | None:
+        total = sum(self.preference.values())
+        weights = [self.preference[r] / total for r in ROLES]
+        choice = random.choices(ROLES, weights=weights, k=1)[0]
+
+        success = random.random() < 0.6
