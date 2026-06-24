@@ -26,3 +26,9 @@ from ava.communication.protocol import MessageBus
 ROLES = ("forage", "build", "guard")
 
 
+class RoleSeekingAgent(AgentCore):
+    """Chooses actions via a simple reinforcement rule: actions that
+    succeeded recently become more likely, which is enough pressure for
+    specialization to emerge without any explicit role assignment."""
+
+    def __init__(self, *args, **kwargs) -> None:
