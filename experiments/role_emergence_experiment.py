@@ -19,3 +19,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from ava.agents.base import Action, AgentCore, Percept
+from ava.analysis.emergence import EmergenceDetector, specialization_index
+from ava.civilization.simulation import Civilization, SimulationConfig
+from ava.communication.protocol import MessageBus
+
+ROLES = ("forage", "build", "guard")
+
+
