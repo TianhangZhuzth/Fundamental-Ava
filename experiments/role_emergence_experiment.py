@@ -49,3 +49,8 @@ class RoleSeekingAgent(AgentCore):
         return Action(kind=choice, payload={"energy_cost": 1.0, "success": success})
 
 
+async def main() -> None:
+    bus = MessageBus()
+    civ = Civilization(SimulationConfig(max_ticks=300), bus=bus)
+    agents = [RoleSeekingAgent(name=f"agent-{i}", bus=bus) for i in range(60)]
+    for agent in agents:
