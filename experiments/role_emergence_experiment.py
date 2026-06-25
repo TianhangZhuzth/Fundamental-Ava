@@ -58,3 +58,8 @@ async def main() -> None:
 
     detector = EmergenceDetector(window=15, significance=0.05)
     action_history: dict[str, Counter] = {a.id: Counter() for a in agents}
+
+    for tick in range(300):
+        await civ.step()
+        for agent in agents:
+            if agent.last_action is not None:
