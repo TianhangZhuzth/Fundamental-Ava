@@ -54,3 +54,7 @@ async def main() -> None:
     civ = Civilization(SimulationConfig(max_ticks=300), bus=bus)
     agents = [RoleSeekingAgent(name=f"agent-{i}", bus=bus) for i in range(60)]
     for agent in agents:
+        civ.add_agent(agent)
+
+    detector = EmergenceDetector(window=15, significance=0.05)
+    action_history: dict[str, Counter] = {a.id: Counter() for a in agents}
