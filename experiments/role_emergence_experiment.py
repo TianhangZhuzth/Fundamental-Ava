@@ -63,3 +63,11 @@ async def main() -> None:
         await civ.step()
         for agent in agents:
             if agent.last_action is not None:
+                action_history[agent.id][agent.last_action.kind] += 1
+
+        index = specialization_index(action_history)
+        event = detector.observe_metric("role_specialization", tick=tick, value=index)
+        if event is not None:
+            print(f"tick={tick:4d} EMERGENCE: {event.description}")
+
+    final_index = specialization_index(action_history)
