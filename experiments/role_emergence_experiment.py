@@ -71,3 +71,8 @@ async def main() -> None:
             print(f"tick={tick:4d} EMERGENCE: {event.description}")
 
     final_index = specialization_index(action_history)
+    print(f"final specialization_index={final_index:.3f}")
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
