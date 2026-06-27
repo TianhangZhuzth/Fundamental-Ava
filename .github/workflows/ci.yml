@@ -28,3 +28,12 @@ jobs:
 
       - name: Lint with ruff
         run: ruff check src tests benchmarks experiments
+
+      - name: Type check with mypy
+        run: mypy src/ava
+
+      - name: Run tests
+        run: pytest --cov=ava --cov-report=term-missing
+
+  bench-smoke:
+    runs-on: ubuntu-latest
