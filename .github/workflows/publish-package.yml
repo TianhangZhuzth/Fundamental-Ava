@@ -3,3 +3,7 @@ name: publish-package
 on:
   push:
     tags:
+      - "v*"
+  workflow_dispatch: {}
+
+env:
