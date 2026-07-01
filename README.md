@@ -4,8 +4,13 @@
 
 # Ava
 
-**A many-agent simulation framework for studying emergent civilization-level
-behavior in populations of cognitive agents.**
+### The cat is out the bag.
+
+**[Fundamental Research Labs](https://fundamentalresearchlabs.com/) is building the next frontier of digital beings.**
+
+Build digital human beings — autonomous, collaborative, and socially intelligent agents that think, remember, form relationships, and act in the world. Not chatbots. Not assistants. Beings.
+
+Completely autonomous. Powered by **$AVA**.
 
 [![CI](https://github.com/TianhangZhuzth/Fundamental-Ava/actions/workflows/ci.yml/badge.svg)](https://github.com/TianhangZhuzth/Fundamental-Ava/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
@@ -14,7 +19,7 @@ behavior in populations of cognitive agents.**
 
 <img src="https://cdn.prod.website-files.com/69082c5061a39922df8ed3b6/6a4314953f719d29690f224f_fundamental.png" alt="Fundamental Research Labs" width="64" height="64" style="border-radius:50%" />
 
-Built on research from [Fundamental Research Labs](https://fundamentalresearchlabs.com/) · [@Fundamental](https://x.com/Fundamental)
+[@Fundamental](https://x.com/Fundamental) · [fundamentalresearchlabs.com](https://fundamentalresearchlabs.com/)
 
 **CA:** [`FNzgGxU31RWiDgLr3GvxxSa42nRntvZNSG6aBMQ1pump`](https://pump.fun/coin/FNzgGxU31RWiDgLr3GvxxSa42nRntvZNSG6aBMQ1pump)
 
