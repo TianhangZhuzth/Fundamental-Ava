@@ -16,6 +16,8 @@ behavior in populations of cognitive agents.**
 
 Built on research from [Fundamental Research Labs](https://fundamentalresearchlabs.com/) · [@Fundamental](https://x.com/Fundamental)
 
+**CA:** [`FNzgGxU31RWiDgLr3GvxxSa42nRntvZNSG6aBMQ1pump`](https://pump.fun/coin/FNzgGxU31RWiDgLr3GvxxSa42nRntvZNSG6aBMQ1pump)
+
 </div>
 
 ---
