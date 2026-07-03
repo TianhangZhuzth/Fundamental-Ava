@@ -1,6 +1,11 @@
-node_modules
-artifacts
-cache
+node_modules/
+artifacts/
+cache/
+typechain-types/
 .env
-.env.local
+coverage/
+coverage.json
+*.log
+dist/
 .DS_Store
+deployments/localhost/
