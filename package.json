@@ -1,0 +1,22 @@
+{
+  "name": "@alloyfund/contracts",
+  "version": "1.0.0",
+  "description": "Alloy — dividend memecoins backed by tokenized stocks",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "coverage": "hardhat coverage",
+    "deploy:robinhood": "hardhat run scripts/deploy.ts --network robinhood",
+    "verify": "hardhat run scripts/verify.ts --network robinhood",
+    "keeper": "hardhat run scripts/keeper.ts --network robinhood",
+    "lint": "solhint 'contracts/**/*.sol'"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "hardhat": "^2.22.5",
+    "solhint": "^5.0.3",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.0"
+  }
+}
