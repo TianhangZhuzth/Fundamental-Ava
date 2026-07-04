@@ -1,0 +1,7 @@
+[
+  {"type":"function","name":"claimDividends","inputs":[],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"pendingDividends","inputs":[{"name":"holder","type":"address","internalType":"address"}],"outputs":[{"name":"","type":"uint256","internalType":"uint256"}],"stateMutability":"view"},
+  {"type":"function","name":"distribute","inputs":[{"name":"amount","type":"uint256","internalType":"uint256"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"function","name":"addConstituent","inputs":[{"name":"stockToken","type":"address","internalType":"address"},{"name":"weight","type":"uint256","internalType":"uint256"},{"name":"ticker","type":"string","internalType":"string"}],"outputs":[],"stateMutability":"nonpayable"},
+  {"type":"event","name":"DividendClaimed","inputs":[{"name":"holder","type":"address","indexed":true,"internalType":"address"},{"name":"amount","type":"uint256","indexed":false,"internalType":"uint256"}],"anonymous":false}
+]
