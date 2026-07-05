@@ -113,3 +113,4 @@ contract AlloyMeme is ERC20 {
         emit Claimed(msg.sender, amount);
     }
 }
+
